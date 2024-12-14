@@ -1,0 +1,10 @@
+communication between parent to child component:
+there are 3 ways to pass data...
+1 -> props : property
+            : props is an immutable object
+
+    props destructuring: do not write props/object in child component and we write direct object value/keys.
+    Disadvantage : props drilling : parent -> child -> most child
+
+2 -> context
+3 -> redux
