@@ -10,7 +10,7 @@ function App() {
     <div className="App">
       <Header></Header>
       {/* <Home></Home> */}
-      <Content string={str}></Content>
+      <Content></Content>
       <Footer></Footer>
     </div>
   );
