@@ -8,3 +8,14 @@ there are 3 ways to pass data...
 
 2 -> context
 3 -> redux
+
+DOM : document object model.
+
+h.w -> Read about VDOM
+virtual DOM : Light weighted copy of original project
+VDOM = DOM -> then changes happend
+
+
+Hooks : In Build Function | Lifecycle methods -> After (16.x)
+-> use on function base component and implement on components
+-> starting with 'use' key word
