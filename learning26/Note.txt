@@ -1,0 +1,115 @@
+we can create 2 type of comp:
+class based comp
+function based comp : hooks
+
+function keyword
+arrow
+
+src:
+ components
+    Home.jsx ->rafc
+    Header.jsx ->rfc
+    Footer.jsx ->rafc
+App.js    
+
+
+
+<div> createELemen ("div")
+div.className
+
+
+comm bw parent to child component:
+there are 3 ways to pass data...
+props  : props stands for property:
+        : props is an immutable object 
+
+props drilling...        
+
+context
+redux
+
+14/12/2024
+task: json array products: id name price, category,availableColor,
+
+1)display product name in available color .. map
+2)display product with price criteria.. filter...
+
+DOM: document object mod..
+
+js --> html -->chnage document update
+
+virtual DOM: light w copy --> original 
+vdom --> DOM --> compare 
+
+Hooks: builtin | lifecyle methods
+
+16.x
+component use...
+
+all hooks: its starts with use word
+useState,useEffect
+
+cust.,..
+useAuth,useCo,,,
+
+component : state variable --> vdom --> original
+<BrowserRouter> :- it will enable routing in react appliaction..
+<Routes>
+<Route>
+
+
+create componanets AboutNetflix
+create componanets ContactNetflix
+
+        register in Routes inside app.js
+        call it from Dashboard using Link component..
+
+create component playmovie
+        register url in app.js with wildard char :id
+indide movie component create 3 4 movies with Link
+        on click of Link above compinent should open
+        inside movie component get wildcard char data using useParams()
+
+
+
+form handling:        
+react-hook-form
+formik
+
+
+
+useForm () ==>
+
+
+handleSubmit = (cb)=>{
+
+         //data fname lsna,.... handle...
+         const name = document.qselect("name").value
+         
+         var formData = {
+                key:value..
+                name:" asjkhsalas"
+         }       
+
+         cb(formData)
+
+
+}
+
+
+1st step : npm install react-hook-form
+
+create folder named forms inside component      
+        create file FormDemo1.jsx ---> code
+        app.js --> <Routes><Route>register...
+        navbar create new link --> provide url registerd in routes
+
+
+05/01/2025
+TASK:
+1)Create form for student appliaction : min 7 fields should inclucde radion button and checkbox
+2)create form mcq paper handler : 
+
+        enter question name : enter opttion correct answer:
+        submit: display question
+        hint:take array as useState and push data.
