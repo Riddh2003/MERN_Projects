@@ -25,6 +25,10 @@ export const Navbar = () => {
                             {/* <a class="nav-link" href="#">Link</a> */}
                             <Link className='nav-link' to="/netflixseries">Series</Link>
                         </li>
+                        <li class="nav-item">
+                            {/* <a class="nav-link" href="#">Link</a> */}
+                            <Link className='nav-link' to="/formdemo">Form</Link>
+                        </li>
                     </ul>
                 </div>
             </nav>

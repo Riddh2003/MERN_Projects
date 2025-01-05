@@ -1,6 +1,7 @@
 import './App.css';
 import { Content } from './components/Content';
 import { Footer } from './components/Footer';
+import { FormDemo, FromDemo } from './components/form/FormDemo';
 import { Header } from './components/Header';
 import { Home } from './components/Home';
 import { Navbar } from './components/Navbar';
@@ -28,12 +29,13 @@ function App() {
         <Route path='/' element={<NetflixDashboard/>}></Route>
         <Route path='/netflixdashboard' element={<NetflixDashboard/>}></Route>
         <Route path='/netflixmovies' element={<NetflixMovies/>}></Route>
-        <Route path='/*' element={<Error404/>}> </Route>
         <Route path='/netflixdashboard/aboutnetflix' element={<AboutNetflix/>}></Route>
         <Route path='/netflixdashboard/contactnetflix' element={<ContactNetflix/>}></Route>
         <Route path='/netflixmovies/play/:id' element={<NetflixPlayMovie/>}></Route>
         <Route path='/netflixseries' element={<NetflixSeries/>}></Route>
         <Route path='/netflixseries/play/:id/:name' element={<NetflixPlaySeries/>}></Route>
+        <Route path='/formdemo' element={<FormDemo/>}></Route>
+        <Route path='/*' element={<Error404/>}> </Route>
       </Routes>
       {/* <Header></Header> */}
       {/* <Home></Home> */}
