@@ -10,7 +10,6 @@ export const FormDemo = () => {
         console.log(data);
         setUserData(data);
         setIsFormSubmitted(true);
-
     }
     return (
         <div>
