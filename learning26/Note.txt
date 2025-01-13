@@ -10,7 +10,7 @@ src:
     Home.jsx ->rafc
     Header.jsx ->rfc
     Footer.jsx ->rafc
-App.js    
+App.js
 
 
 
@@ -21,9 +21,9 @@ div.className
 comm bw parent to child component:
 there are 3 ways to pass data...
 props  : props stands for property:
-        : props is an immutable object 
+        : props is an immutable object
 
-props drilling...        
+props drilling...
 
 context
 redux
@@ -38,8 +38,8 @@ DOM: document object mod..
 
 js --> html -->chnage document update
 
-virtual DOM: light w copy --> original 
-vdom --> DOM --> compare 
+virtual DOM: light w copy --> original
+vdom --> DOM --> compare
 
 Hooks: builtin | lifecyle methods
 
@@ -72,7 +72,7 @@ indide movie component create 3 4 movies with Link
 
 
 
-form handling:        
+form handling:
 react-hook-form
 formik
 
@@ -85,11 +85,11 @@ handleSubmit = (cb)=>{
 
          //data fname lsna,.... handle...
          const name = document.qselect("name").value
-         
+
          var formData = {
                 key:value..
                 name:" asjkhsalas"
-         }       
+         }
 
          cb(formData)
 
@@ -99,7 +99,7 @@ handleSubmit = (cb)=>{
 
 1st step : npm install react-hook-form
 
-create folder named forms inside component      
+create folder named forms inside component
         create file FormDemo1.jsx ---> code
         app.js --> <Routes><Route>register...
         navbar create new link --> provide url registerd in routes
@@ -108,8 +108,8 @@ create folder named forms inside component
 05/01/2025
 TASK:
 1)Create form for student appliaction : min 7 fields should inclucde radion button and checkbox
-2)create form mcq paper handler : 
+2)create form mcq paper handler :
 
         enter question name : enter opttion correct answer:
         submit: display question
-        hint:take array as useState and push data.
+        hint:take array as useState and push data.  

@@ -52,7 +52,7 @@ export const Form = () => {
     <div className="max-h-fit flex flex-col items-center justify-center">
       <form
         onSubmit={handleSubmit(submitHandler)}
-        className="bg-blue-100 w-1/3 h-auto text-black flex flex-col rounded-xl m-6 p-6 space-y-4 shadow-xl"
+        className="bg-white w-1/3 h-auto text-black flex flex-col rounded-xl m-6 p-6 space-y-4 shadow-xl"
       >
         <p className="text-4xl text-center font-semibold">
           Student Application
@@ -62,7 +62,7 @@ export const Form = () => {
           <input
             type="text"
             placeholder="Enter Name"
-            className="rounded-md p-2 text-black"
+            className="rounded-md p-2 text-black border border-gray-300"
             {...register("name", validationSchema.name)}
           />
           <p className="text-red-400">{errors.name?.message}</p>
@@ -72,7 +72,7 @@ export const Form = () => {
           <input
             type="number"
             placeholder="Enter Age"
-            className="rounded-md p-2 text-black"
+            className="rounded-md p-2 text-black border border-gray-300"
             {...register("age", validationSchema.age)}
           />
           <p className="text-red-400">{errors.age?.message}</p>
@@ -82,7 +82,7 @@ export const Form = () => {
           <input
             type="text"
             placeholder="Enter refCode"
-            className="rounded-md p-2 text-black"
+            className="rounded-md p-2 text-black border border-gray-300"
             {...register("refCode", validationSchema.refCodde)}
           />
           <p className="text-red-400">{errors.refCode?.message}</p>
@@ -117,7 +117,7 @@ export const Form = () => {
           <input
             type="email"
             placeholder="Enter Email"
-            className="rounded-md p-2 text-black"
+            className="rounded-md p-2 text-black border border-gray-300"
             {...register("email")}
           />
         </div>
@@ -126,7 +126,7 @@ export const Form = () => {
           <input
             type="tel"
             placeholder="Enter Phone Number"
-            className="rounded-md p-2 text-black"
+            className="rounded-md p-2 text-black border border-gray-300"
             {...register("phoneNo")}
           />
         </div>
@@ -134,7 +134,7 @@ export const Form = () => {
           <label className="mb-1">Address:</label>
           <textarea
             placeholder="Enter Address"
-            className="rounded-md p-2 text-black"
+            className="rounded-md p-2 text-black border border-gray-300"
             {...register("address")}
           />
         </div>

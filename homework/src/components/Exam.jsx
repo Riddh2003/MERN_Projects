@@ -2,18 +2,21 @@ import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 
 export const Exam = () => {
-  const { register, handleSubmit } = useForm();
-  const [questions, setQuestions] = useState();
+  const { register, handleSubmit, reset } = useForm();
+  const [questions, setQuestions] = useState([]);
   const [isSubmited, setIsSubmited] = useState(false);
+
   const submitHandler = data => {
-    setQuestions(data);
+    setQuestions(prevQuestions => [...prevQuestions, data]);
     setIsSubmited(true);
+    reset();
   };
+
   return (
-    <div className="flex justify-center items-center h-screen bg-gray-100">
+    <div className="flex flex-col items-center mt-6 justify-center max-h-fit">
       <form
         onSubmit={handleSubmit(submitHandler)}
-        className="bg-white p-6 rounded shadow-md w-full max-w-md"
+        className="bg-white p-6 rounded-lg shadow-md w-full max-w-md mb-6"
       >
         <p className="text-2xl font-bold mb-4">Exam</p>
         <div className="mb-4">
@@ -31,28 +34,50 @@ export const Exam = () => {
             type="text"
             placeholder="Enter the option A: "
             className="w-full p-2 border border-gray-300 rounded mt-1 mb-2"
-            {...register("option A")}
+            {...register("optionA")}
           />
           <input
             type="text"
             placeholder="Enter the option B: "
             className="w-full p-2 border border-gray-300 rounded mt-1 mb-2"
-            {...register("option B")}
+            {...register("optionB")}
           />
           <input
             type="text"
             placeholder="Enter the option C: "
             className="w-full p-2 border border-gray-300 rounded mt-1 mb-2"
-            {...register("option C")}
+            {...register("optionC")}
           />
           <input
             type="text"
             placeholder="Enter the option D: "
             className="w-full p-2 border border-gray-300 rounded mt-1"
-            {...register("option D")}
+            {...register("optionD")}
           />
+          <button
+            type="submit"
+            className="btn mt-4 p-2 rounded bg-gray-400 w-full hover:bg-gray-500"
+          >
+            ADD
+          </button>
         </div>
       </form>
+      {isSubmited &&
+        questions.map((question, index) => (
+          <div
+            key={index}
+            className="bg-white p-6 rounded-lg shadow-md w-full max-w-md mb-6"
+          >
+            <p className="text-2xl font-bold mb-4">Question {index + 1}</p>
+            <p className="text-lg font-semibold mb-4">Q: {question.question}</p>
+            <p className="text-lg font-semibold mb-4" type="checkbox">
+              A: {question.optionA}
+            </p>
+            <p className="text-lg font-semibold mb-4">B: {question.optionB}</p>
+            <p className="text-lg font-semibold mb-4">C: {question.optionC}</p>
+            <p className="text-lg font-semibold mb-4">D: {question.optionD}</p>
+          </div>
+        ))}
     </div>
   );
 };

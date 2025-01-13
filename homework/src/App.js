@@ -5,7 +5,7 @@ import { Exam } from "./components/Exam";
 
 function App() {
   return (
-    <div className="w-full h-screen">
+    <div className="w-full max-h-fit py-2 px-4 bg-gray-200">
       <Navbar></Navbar>
       <Routes>
         <Route path="/navbar/form" element={<Form></Form>}></Route>
