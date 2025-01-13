@@ -54,6 +54,15 @@ export const Exam = () => {
             className="w-full p-2 border border-gray-300 rounded mt-1"
             {...register("optionD")}
           />
+        </div>
+        <div>
+          <label>Correct Option: </label>
+          <input
+            type="text"
+            placeholder="Enter the correct option: "
+            className="w-full p-2 border border-gray-300 rounded mt-1"
+            {...register("correctOption")}
+          />
           <button
             type="submit"
             className="btn mt-4 p-2 rounded bg-gray-400 w-full hover:bg-gray-500"

@@ -112,4 +112,4 @@ TASK:
 
         enter question name : enter opttion correct answer:
         submit: display question
-        hint:take array as useState and push data.  
+        hint:take array as useState and push data.
