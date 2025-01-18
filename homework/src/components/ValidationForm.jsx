@@ -25,7 +25,8 @@ export const ValidationForm = () => {
                 message: "Password is required*"
             },
             pattern: {
-                value: /^(?=.*[A-Z])(?=.*[!@#$&_*]).{8,}$/
+                value: /^(?=.*[A-Z])(?=.*[!@#$&_*]).{8,15}$/,
+                message: "Password length must be between 8 to 15."
             }
         },
         hobby: {
@@ -42,8 +43,8 @@ export const ValidationForm = () => {
     const isMinLength = password.length >= 8;
 
     return (
-        <div className='min-h-screen flex items-center justify-center bg-gray-100'>
-            <form onSubmit={handleSubmit(submitHandler)} className='bg-white border-2 border-gray-300 rounded-lg w-1/3 p-6 shadow-lg'>
+        <div className='min-h-screen flex items-center justify-center'>
+            <form onSubmit={handleSubmit(submitHandler)} className='bg-white rounded-lg w-1/3 p-6 shadow-lg'>
                 <h1 className='text-2xl font-bold mb-4'>Validation Form</h1>
                 <div className='mb-4'>
                     <label className='block text-gray-700 font-semibold mb-2'>Name
