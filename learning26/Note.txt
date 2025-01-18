@@ -113,3 +113,9 @@ TASK:
         enter question name : enter opttion correct answer:
         submit: display question
         hint:take array as useState and push data.
+
+3)regex revsion:
+4 hobbies user has to select min 3
+depdent dropdown
+onchange -->regex  :
+passpwrd handler....

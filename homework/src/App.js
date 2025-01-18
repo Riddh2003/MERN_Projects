@@ -2,6 +2,7 @@ import { Route, Routes } from "react-router-dom";
 import { Navbar } from "./components/Navbar";
 import { Form } from "./components/Form";
 import { Exam } from "./components/Exam";
+import { ValidationForm } from "./components/ValidationForm";
 
 function App() {
   return (
@@ -10,6 +11,7 @@ function App() {
       <Routes>
         <Route path="/navbar/form" element={<Form></Form>}></Route>
         <Route path="/navbar/exam" element={<Exam></Exam>}></Route>
+        <Route path="/navbar/validationform" element={<ValidationForm/>}></Route>
       </Routes>
     </div>
   );
