@@ -26,6 +26,11 @@ export const Navbar = () => {
                                     Validation Form
                                 </Link>
                             </li>
+                            <li>
+                                <Link className="text-lg" to='/navbar/apidemo'>
+                                    APIDemo
+                                </Link>
+                            </li>
                         </ul>
                     </div>
                 </div>
