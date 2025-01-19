@@ -4,6 +4,8 @@ import { Form } from "./components/Form";
 import { Exam } from "./components/Exam";
 import { ValidationForm } from "./components/ValidationForm";
 import { APIDemo } from "./components/apis/APIDemo";
+import { MovieCards } from "./components/apis/MovieCards";
+import { Imdb } from "./components/apis/Imdb";
 
 function App() {
     return (
@@ -14,6 +16,8 @@ function App() {
                 <Route path="/navbar/exam" element={<Exam></Exam>}></Route>
                 <Route path="/navbar/validationform" element={<ValidationForm />}></Route>
                 <Route path="/navbar/apidemo" element={<APIDemo />}></Route>
+                <Route path="/navbar/movies" element={<MovieCards />}></Route>
+                <Route path="/navbar/movies/moivedetails/:id" element={<Imdb />}></Route>
             </Routes>
         </div>
     );

@@ -23,12 +23,17 @@ export const Navbar = () => {
                             </li>
                             <li>
                                 <Link className="text-lg" to="/navbar/validationform">
-                                    Validation Form
+                                    ValidationForm
                                 </Link>
                             </li>
                             <li>
                                 <Link className="text-lg" to='/navbar/apidemo'>
                                     APIDemo
+                                </Link>
+                            </li>
+                            <li>
+                                <Link className="text-lg" to='/navbar/movies'>
+                                    Movies
                                 </Link>
                             </li>
                         </ul>
