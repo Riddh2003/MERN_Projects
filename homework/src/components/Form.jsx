@@ -12,7 +12,7 @@ export const Form = () => {
 
   const submitHandler = data => {
     console.log(data);
-    setUserData(data);
+    setUserData(data);  
     setIsSubmited(true);
   };
 
