@@ -5,6 +5,7 @@ export const ValidationForm = () => {
     const { register, handleSubmit, formState: { errors, isValid }, watch } = useForm({ mode: 'onChange' });
     const [userData, setUserData] = useState();
     const [isSubmited, setIsSubmited] = useState(false);
+    const [selectedCountry, setSelectedCountry] = useState('');
 
     const submitHandler = (data) => {
         console.log(data)
@@ -36,6 +37,10 @@ export const ValidationForm = () => {
         }
     };
 
+    const countries = {
+        India: ['Gujarat', 'Pune', 'Hydrabad', 'Banglore'],
+        USA: ['California', 'Texas', 'Florida', 'New York']
+    };
     const password = watch('password', '');
 
     const isSpecialChar = /[!@#$&_*]/.test(password);
@@ -43,7 +48,7 @@ export const ValidationForm = () => {
     const isMinLength = password.length >= 8;
 
     return (
-        <div className='min-h-screen flex items-center justify-center'>
+        <div className='min-h-screen flex items-center justify-center mt-6'>
             <form onSubmit={handleSubmit(submitHandler)} className='bg-white rounded-lg w-1/3 p-6 shadow-lg'>
                 <h1 className='text-2xl font-bold mb-4'>Validation Form</h1>
                 <div className='mb-4'>
@@ -102,6 +107,33 @@ export const ValidationForm = () => {
                         <span className='ml-2'>Volleyball</span>
                     </label>
                 </div>
+                <div className=''>
+                    <label className='block text-gray-700 font-semibold mb-2'>Country:</label>
+                    <select
+                        className='border-2 border-gray-500 rounded w-full p-2 mb-4'
+                        onChange={(e) => setSelectedCountry(e.target.value)}
+                    >
+                        <option value=''>Select Country</option>
+                        {Object.keys(countries).map((country) => (
+                            <option key={country} value={country}>
+                                {country}
+                            </option>
+                        ))}
+                    </select>
+                </div>
+                {selectedCountry && (
+                    <div className=''>
+                        <label className='block text-gray-700 font-semibold mb-2'>State:</label>
+                        <select className='border-2 border-gray-500 rounded w-full p-2 mb-4'>
+                            <option value=''>Select State</option>
+                            {countries[selectedCountry].map((state) => (
+                                <option key={state} value={state}>
+                                    {state}
+                                </option>
+                            ))}
+                        </select>
+                    </div>
+                )}
                 <button type='submit' className='bg-blue-500 text-white rounded-md p-2 mt-4 hover:bg-blue-600'>
                     Submit
                 </button>
