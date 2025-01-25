@@ -14,23 +14,31 @@ export const APIDemo2 = () => {
             email: data.email,
             isActive: true,
         };
-        const res = await axios.post("https://node5.onrender.com/user/user", user);
-        console.log(res.data);
-        console.log(res.status);
-        if (res.status == 201) {
-            toast.success('user added successfully...', {
+
+        await toast.promise(
+            axios.post("https://node5.onrender.com/user/user", user),
+            {
+                pending: "Processing your request...",
+                success: "User added successfully!",
+                error: "Something went wrong! Please try again",
+            },
+            {
                 position: "top-center",
-                autoClose: 5000,
+                autoClose: 4000,
                 hideProgressBar: false,
-                closeOnClick: false,
+                closeOnClick: true,
                 pauseOnHover: true,
                 draggable: true,
-                progress: undefined,
                 theme: "dark",
                 transition: Bounce,
-            });
-            navigate('/navbar/apidemo')
-        }
+            }
+        ).then((res) => {
+            if (res.status === 201) {
+                navigate("/navbar/apidemo");
+            }
+        }).catch((error) => {
+            console.error("Error : ", error);
+        });
     };
 
     return (
