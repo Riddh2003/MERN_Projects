@@ -6,6 +6,7 @@ import { ValidationForm } from "./components/ValidationForm";
 import { APIDemo } from "./components/apis/APIDemo";
 import { MovieCards } from "./components/apis/MovieCards";
 import { Imdb } from "./components/apis/Imdb";
+import { APIDemo2 } from "./components/apis/APIDemo2";
 
 function App() {
     return (
@@ -18,6 +19,7 @@ function App() {
                 <Route path="/navbar/apidemo" element={<APIDemo />}></Route>
                 <Route path="/navbar/movies" element={<MovieCards />}></Route>
                 <Route path="/navbar/movies/moivedetails/:id" element={<Imdb />}></Route>
+                <Route path="/navber/apidemo2" element={<APIDemo2 />}></Route>
             </Routes>
         </div>
     );

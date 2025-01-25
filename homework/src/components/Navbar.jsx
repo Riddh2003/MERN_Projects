@@ -36,6 +36,11 @@ export const Navbar = () => {
                                     Movies
                                 </Link>
                             </li>
+                            <li>
+                                <Link className="text-lg" to='/navber/apidemo2'>
+                                    APIDemo 2
+                                </Link>
+                            </li>
                         </ul>
                     </div>
                 </div>
