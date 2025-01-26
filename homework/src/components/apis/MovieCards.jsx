@@ -2,13 +2,16 @@ import axios from 'axios';
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
+import Loader from '../Loader';
 
 export const MovieCards = () => {
     const { register, handleSubmit } = useForm();
     const [movieData, setMovieData] = useState([]);
     const [isSubmitted, setIsSubmitted] = useState(false);
+    const [loading,setLoading] = useState(false);
 
     const getMoviesData = async (data) => {
+        setLoading(true);
         try {
             const res = await axios.get('https://www.omdbapi.com/', {
                 params: {
@@ -21,10 +24,14 @@ export const MovieCards = () => {
             setIsSubmitted(true);
         } catch (error) {
             console.error('Error : ', error);
+        } finally{
+            setLoading(false);
         }
     };
 
-
+    if(loading){
+        return <Loader></Loader>
+    }
     return (
         <div className="min-h-screen flex flex-col items-center justify-center p-4">
             <form onSubmit={handleSubmit(getMoviesData)} className="bg-white p-6 rounded-lg shadow-md w-full max-w-md">

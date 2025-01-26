@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
+import Loader from '../Loader';
 
 export const Imdb = () => {
     const { id } = useParams();
@@ -26,15 +27,15 @@ export const Imdb = () => {
     }, [id]);
 
     if (!movieDetails) {
-        return <div>Loading...</div>;
+        return <Loader></Loader>
     }
 
     return (
-        <div className="min-h-screen flex flex-col items-center justify-center p-4">
-            <div className="bg-white p-6 rounded-lg shadow-md w-100 max-h-full">
+        <div className="h-full w-full flex flex-col items-center justify-center p-4">
+            <div className="bg-white p-6 rounded-lg shadow-md h-full w-full">
                 <h1 className="text-3xl font-bold mb-4 h-full">{movieDetails.Title}</h1>
                 <div className="flex flex-col md:flex-row">
-                    <img src={movieDetails.Poster} alt={movieDetails.Title} className=" h-100 w-100 md:w-1/3 object-cover rounded-md mb-4 md:mb-0 md:mr-4" />
+                    <img src={movieDetails.Poster} alt={movieDetails.Title} className=" h-auto w-auto md:w-1/3 object-cover rounded-md mb-4 md:mb-0 md:mr-4" />
                     <div className="flex flex-col">
                         <p><strong>Year:</strong> {movieDetails.Year}</p>
                         <p><strong>Genre:</strong> {movieDetails.Genre}</p>

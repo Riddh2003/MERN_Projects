@@ -24,7 +24,7 @@ export const APIDemo2 = () => {
             },
             {
                 position: "top-center",
-                autoClose: 4000,
+                autoClose: 2000,
                 hideProgressBar: false,
                 closeOnClick: true,
                 pauseOnHover: true,
@@ -42,10 +42,10 @@ export const APIDemo2 = () => {
     };
 
     return (
-        <div className="flex items-center justify-center min-h-screen bg-gray-100">
+        <div className="flex items-center justify-center min-h-screen">
             <ToastContainer
                 position="top-center"
-                autoClose={4000}
+                autoClose={5000}
                 hideProgressBar={false}
                 newestOnTop={false}
                 closeOnClick={false}
