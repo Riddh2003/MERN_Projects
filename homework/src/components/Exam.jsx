@@ -13,7 +13,7 @@ export const Exam = () => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center h-screen bg-gray-100">
+    <div className="flex flex-col items-center justify-center h-screen">
       <form
         onSubmit={handleSubmit(submitHandler)}
         className="bg-white p-6 rounded-lg shadow-md w-full max-w-md mb-6"

@@ -44,12 +44,12 @@ export const Form = () => {
         value: true,
         message: "RefCode is required*"
       },
-      validate: value => value == "royal" || "jagrut" || "Invalid refCode"
+      validate: value => value === "royal" || "jagrut" || "Invalid refCode"
     }
   };
 
   return (
-    <div className="max-h-fit flex flex-col items-center justify-center">
+    <div className=" w-full h-full flex flex-col items-center justify-center">
       <form
         onSubmit={handleSubmit(submitHandler)}
         className="bg-white w-1/3 h-auto text-black flex flex-col rounded-xl m-6 p-6 space-y-4 shadow-xl"
