@@ -4,10 +4,11 @@
   top: 0;
   left: 0;
   width: 100vw; /* Full width */
-  height: 100vh; /* Full height */
+  height: 100%; /* Adjusted to 100% instead of 100vh */
   background: radial-gradient(circle at center, #000000, #03030a, #060617);
   overflow: hidden;
   z-index: -1; /* Place it behind all content */
+  pointer-events: none; /* Ensures it doesn’t block interactions with other elements */
 }
 
 /* Nebula Effect */

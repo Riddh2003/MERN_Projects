@@ -7,6 +7,7 @@ import { Bounce, toast, ToastContainer } from "react-toastify";
 export const APIDemo2 = () => {
     const { register, handleSubmit } = useForm();
     const navigate = useNavigate();
+
     const submitHandler = async (data) => {
         const user = {
             name: data.name,
@@ -42,7 +43,7 @@ export const APIDemo2 = () => {
     };
 
     return (
-        <div className="flex items-center justify-center h-full w-full">
+        <div className="flex items-center justify-center min-h-screen bg-black">
             <ToastContainer
                 position="top-center"
                 autoClose={5000}
@@ -56,13 +57,13 @@ export const APIDemo2 = () => {
                 theme="dark"
                 transition={Bounce}
             />
-            <div className="w-full max-w-md p-6 bg-white rounded-lg shadow-lg">
-                <h1 className="mb-6 text-2xl font-semibold text-center text-gray-800">
+            <div className="w-full max-w-lg p-8 bg-gray-800 shadow-lg text-white rounded-lg">
+                <h1 className="mb-6 text-3xl font-semibold text-center">
                     Add Student Data
                 </h1>
                 <form onSubmit={handleSubmit(submitHandler)} className="space-y-4">
                     <div>
-                        <label className="block mb-2 text-sm font-medium text-gray-700">
+                        <label className="block mb-2 text-sm font-medium">
                             Name
                         </label>
                         <input
@@ -73,7 +74,7 @@ export const APIDemo2 = () => {
                         />
                     </div>
                     <div>
-                        <label className="block mb-2 text-sm font-medium text-gray-700">
+                        <label className="block mb-2 text-sm font-medium">
                             Email
                         </label>
                         <input
@@ -84,7 +85,7 @@ export const APIDemo2 = () => {
                         />
                     </div>
                     <div>
-                        <label className="block mb-2 text-sm font-medium text-gray-700">
+                        <label className="block mb-2 text-sm font-medium">
                             Age
                         </label>
                         <input

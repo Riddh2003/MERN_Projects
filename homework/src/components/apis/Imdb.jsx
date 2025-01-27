@@ -27,16 +27,20 @@ export const Imdb = () => {
     }, [id]);
 
     if (!movieDetails) {
-        return <Loader></Loader>
+        return <Loader />;
     }
 
     return (
-        <div className="h-full w-full flex flex-col items-center justify-center p-4">
-            <div className="bg-white p-6 rounded-lg shadow-md h-full w-full">
-                <h1 className="text-3xl font-bold mb-4 h-full">{movieDetails.Title}</h1>
+        <div className="h-full w-full flex flex-col items-center justify-center p-4 bg-black">
+            <div className="bg-gray-800 text-white p-6 rounded-lg shadow-lg w-full">
+                <h1 className="text-4xl font-bold mb-6 text-center">{movieDetails.Title}</h1>
                 <div className="flex flex-col md:flex-row">
-                    <img src={movieDetails.Poster} alt={movieDetails.Title} className=" h-auto w-auto md:w-1/3 object-cover rounded-md mb-4 md:mb-0 md:mr-4" />
-                    <div className="flex flex-col">
+                    <img
+                        src={movieDetails.Poster}
+                        alt={movieDetails.Title}
+                        className="h-auto w-auto md:w-1/3 object-cover rounded-md mb-6 md:mb-0 md:mr-6"
+                    />
+                    <div className="flex flex-col space-y-3">
                         <p><strong>Year:</strong> {movieDetails.Year}</p>
                         <p><strong>Genre:</strong> {movieDetails.Genre}</p>
                         <p><strong>Director:</strong> {movieDetails.Director}</p>
@@ -54,7 +58,9 @@ export const Imdb = () => {
                         <p><strong>imdbRating:</strong> {movieDetails.imdbRating}</p>
                         <p><strong>imdbVotes:</strong> {movieDetails.imdbVotes}</p>
                         <Link to='/navbar/movies'>
-                            <button className='w-36 bg-blue-500 p-2 text-lg rounded hover:bg-blue-500 font-semibold text-white' >Back...</button>
+                            <button className='w-36 bg-blue-600 p-2 text-lg rounded hover:bg-blue-700 font-semibold'>
+                                Back...
+                            </button>
                         </Link>
                     </div>
                 </div>
