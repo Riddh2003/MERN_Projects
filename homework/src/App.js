@@ -10,7 +10,7 @@ import { APIDemo2 } from "./components/apis/APIDemo2";
 
 function App() {
     return (
-        <div className="universe-bg flex flex-col px-3 py-3 bg-black w-full h-max">
+        <div className="universe-bg flex flex-col px-3 py-2 w-full h-max">
             <Navbar></Navbar>
             <div className="flex-grow p-4">
                 <Routes>

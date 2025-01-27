@@ -43,7 +43,7 @@ export const APIDemo2 = () => {
     };
 
     return (
-        <div className="flex items-center justify-center min-h-screen bg-black">
+        <div className="flex items-center justify-center min-h-screen">
             <ToastContainer
                 position="top-center"
                 autoClose={5000}
@@ -57,7 +57,7 @@ export const APIDemo2 = () => {
                 theme="dark"
                 transition={Bounce}
             />
-            <div className="w-full max-w-lg p-8 bg-gray-800 shadow-lg text-white rounded-lg">
+            <div className="w-full max-w-lg p-8 bg-black shadow-lg text-white rounded-lg">
                 <h1 className="mb-6 text-3xl font-semibold text-center">
                     Add Student Data
                 </h1>

@@ -13,14 +13,14 @@ export const Exam = () => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center h-screen">
+    <div className="flex flex-col items-center text-white justify-center h-screen">
       <form
         onSubmit={handleSubmit(submitHandler)}
-        className="bg-white p-6 rounded-lg shadow-md w-full max-w-md mb-6"
+        className="bg-zinc-900 p-6 rounded-lg shadow-md w-full max-w-md mb-6"
       >
         <p className="text-2xl font-bold mb-4">Exam</p>
         <div className="mb-4">
-          <label className="block text-gray-700">Question :</label>
+          <label className="block">Question :</label>
           <input
             type="text"
             placeholder="Enter the questions: "
@@ -29,7 +29,7 @@ export const Exam = () => {
           />
         </div>
         <div className="mb-4">
-          <label className="block text-gray-700">Options :</label>
+          <label className="block">Options :</label>
           <input
             type="text"
             placeholder="Enter the option A: "
@@ -56,7 +56,7 @@ export const Exam = () => {
           />
           <button
             type="submit"
-            className="btn mt-4 p-2 rounded bg-gray-300 w-full"
+            className="btn mt-4 p-2 rounded text-white bg-blue-500 hover:bg-blue-600 w-full"
           >
             ADD
           </button>

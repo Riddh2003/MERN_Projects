@@ -31,8 +31,8 @@ export const Imdb = () => {
     }
 
     return (
-        <div className="h-full w-full flex flex-col items-center justify-center p-4 bg-black">
-            <div className="bg-gray-800 text-white p-6 rounded-lg shadow-lg w-full">
+        <div className="h-full w-full flex flex-col items-center justify-center p-4">
+            <div className="bg-black text-white p-6 rounded-lg shadow-lg w-full">
                 <h1 className="text-4xl font-bold mb-6 text-center">{movieDetails.Title}</h1>
                 <div className="flex flex-col md:flex-row">
                     <img

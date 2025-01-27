@@ -12,7 +12,7 @@ export const Form = () => {
 
   const submitHandler = data => {
     console.log(data);
-    setUserData(data);  
+    setUserData(data);
     setIsSubmited(true);
   };
 
@@ -52,7 +52,7 @@ export const Form = () => {
     <div className=" w-full h-full flex flex-col items-center justify-center">
       <form
         onSubmit={handleSubmit(submitHandler)}
-        className="bg-white w-1/3 h-auto text-black flex flex-col rounded-xl m-6 p-6 space-y-4 shadow-xl"
+        className="bg-zinc-900 w-1/3 h-auto text-white flex flex-col rounded-xl m-6 p-6 space-y-4 shadow-xl"
       >
         <p className="text-4xl text-center font-semibold">
           Student Application
