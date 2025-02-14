@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Button, Modal } from 'react-bootstrap';
 import Loader from '../Loader';  // Import your custom Loader component
@@ -9,7 +9,7 @@ export const APIDemo = () => {
     const [userDetail, setUserDetail] = useState({});
     const [loading, setLoading] = useState(false); // Add loading state
 
-    const apicall = async () => {
+    const getAllUser = async () => {
         setLoading(true); // Set loading to true when API call starts
         try {
             const res = await axios.get("https://node5.onrender.com/user/user");
@@ -35,20 +35,25 @@ export const APIDemo = () => {
         if (res.status === 204) {
             // alert('User Deleted Successfully')
         }
-        apicall(); // Refresh the user data
+        getAllUser(); // Refresh the user data
         setLoading(false); // Set loading to false after API call finishes
     };
+
+    useEffect(() => {
+        getAllUser();
+    }, [])
+
 
     return (
         <div className="min-h-screen flex flex-col items-center justify-center p-4">
             <h1 className="text-3xl font-bold mb-6">API DEMO</h1>
-            <button
+            {/* <button
                 className="bg-blue-500 text-white px-4 py-2 rounded mb-6 hover:bg-blue-600 transition duration-300"
                 onClick={() => { apicall() }}
                 disabled={loading} // Disable button while loading
             >
                 {loading ? <Loader /> : "Get"}
-            </button>
+            </button> */}
             <table className="min-w-full bg-gray-200 rounded-lg shadow-md">
                 <thead>
                     <tr className="bg-gray-400 text-left">
