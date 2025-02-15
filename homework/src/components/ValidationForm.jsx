@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 
 export const ValidationForm = () => {
-    const { register, handleSubmit, formState: { errors, isValid }, watch } = useForm({ mode: 'onChange' });
+    const { register, handleSubmit, formState: { errors }, watch } = useForm({ mode: 'onChange' });
     const [userData, setUserData] = useState();
     const [isSubmited, setIsSubmited] = useState(false);
     const [selectedCountry, setSelectedCountry] = useState('');

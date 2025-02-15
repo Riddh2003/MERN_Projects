@@ -41,6 +41,9 @@ export const Navbar = () => {
                   APIDemo 2
                 </Link>
               </li>
+              <li>
+                <Link className="hover:text-blue-400 transition-all duration-300 transform hover:scale-105" to="/navbar/usememo">UseMemo</Link>
+              </li>
             </ul>
           </div>
         </div>

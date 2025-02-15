@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Button, Modal } from 'react-bootstrap';
 import Loader from '../Loader';  // Import your custom Loader component
+import { Link } from 'react-router-dom';
 
 export const APIDemo = () => {
     const [userData, setUserData] = useState([]);
@@ -47,13 +48,6 @@ export const APIDemo = () => {
     return (
         <div className="min-h-screen flex flex-col items-center justify-center p-4">
             <h1 className="text-3xl font-bold mb-6">API DEMO</h1>
-            {/* <button
-                className="bg-blue-500 text-white px-4 py-2 rounded mb-6 hover:bg-blue-600 transition duration-300"
-                onClick={() => { apicall() }}
-                disabled={loading} // Disable button while loading
-            >
-                {loading ? <Loader /> : "Get"}
-            </button> */}
             <table className="min-w-full bg-gray-200 rounded-lg shadow-md">
                 <thead>
                     <tr className="bg-gray-400 text-left">
@@ -86,6 +80,9 @@ export const APIDemo = () => {
                                 >
                                     {loading ? <Loader /> : "Delete"}
                                 </Button>
+                                <Link to={`/navbar/edituser/${user._id}`} className='bg-green-500 p-2 text-white rounded'>
+                                    {loading ? <Loader /> : "Update"}
+                                </Link>
                             </td>
                         </tr>
                     ))}
@@ -105,6 +102,7 @@ export const APIDemo = () => {
                     </Button>
                 </Modal.Footer>
             </Modal>
+            {loading && <Loader />} {/* Show loader at the bottom of the page */}
         </div>
     );
 };
