@@ -9,6 +9,7 @@ import { Imdb } from "./components/apis/Imdb";
 import { APIDemo2 } from "./components/apis/APIDemo2";
 import { UseMemo } from "./components/apis/UseMemo.jsx";
 import { EditUser } from "./components/apis/EditUser.jsx";
+import { Bomb } from "./components/Bomb.jsx";
 
 function App() {
     return (
@@ -25,6 +26,7 @@ function App() {
                     <Route path="/navbar/apidemo2" element={<APIDemo2 />} ></Route>
                     <Route path="/navbar/useMemo" element={<UseMemo />}></Route>
                     <Route path="/navbar/edituser/:id" element={<EditUser />}></Route>
+                    <Route path="/navbar/bomb" element={<Bomb />}></Route>
                 </Routes>
             </div>
         </div>
