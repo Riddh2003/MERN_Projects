@@ -11,14 +11,16 @@ import { UseMemo } from "./components/apis/UseMemo.jsx";
 import { EditUser } from "./components/apis/EditUser.jsx";
 import { Bomb } from "./components/Bomb.jsx";
 import { Home } from "./components/Home.jsx";
+import { Login } from "./components/Login.jsx";
 
 function App() {
     return (
-        <div className="universe-bg flex flex-col px-3 py-2 w-full h-max">
+        <div className="universe-bg flex flex-col px-3 py-2 w-[100vw] h-[100vh]">
             <Navbar></Navbar>
             <div className="flex-grow p-4">
                 <Routes>
                     <Route path="/" element={<Home />}></Route>
+                    <Route path="/login" element={<Login />}></Route>
                     <Route path="/navbar/form" element={<Form />} ></Route>
                     <Route path="/navbar/exam" element={<Exam />} ></Route>
                     <Route path="/navbar/validationform" element={<ValidationForm />} ></Route>

@@ -11,7 +11,7 @@ export const Exam = () => {
     setIsSubmited(true);
     reset();
   };
-
+  
   return (
     <div className="flex flex-col items-center text-white justify-center min-h-fit">
       <form

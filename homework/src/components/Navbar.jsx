@@ -3,13 +3,13 @@ import { Link } from "react-router-dom";
 
 export const Navbar = () => {
   return (
-    <div className="w-full h-full top-2 z-50 position-sticky"
+    <div className="h-fit top-2 z-50 position-sticky"
       style={{
         fontFamily: "Mystery Quest, serif",
       }}
     >
-      <div className="navbar rounded-lg bg-white shadow-lg text-[#6b21a8] backdrop-blur-md">
-        <div className="flex justify-between items-center px-4 py-1 gap-16">
+      <div className="navbar w-full rounded-lg bg-white shadow text-[#6b21a8] backdrop-blur-md">
+        <div className="w-full flex justify-between items-center px-4 py-1">
           <Link className="text-5xl font-bold transition-all"
             to="/">
             Harry Potter
@@ -43,7 +43,7 @@ export const Navbar = () => {
               </li>
               <li>
                 <Link className="hover:text-black transition-all duration-300 transform hover:scale-105" to="/navbar/apidemo2">
-                  APIDemo 2
+                  APIDemo2
                 </Link>
               </li>
               <li>
@@ -53,6 +53,13 @@ export const Navbar = () => {
                 <Link className="hover:text-black transition-all duration-300 transform hover:scale-105" to="/navbar/bomb">Bomb</Link>
               </li>
             </ul>
+          </div>
+          <div>
+            <Link className="hover:text-black text-white shadow px-4 py-2 bg-[#6b21a8] rounded text-xl transition-all duration-300 transform hover:scale-105" to="/login">
+              <button>
+                Login
+              </button>
+            </Link>
           </div>
         </div>
       </div>

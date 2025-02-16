@@ -3,12 +3,15 @@ import axios from 'axios';
 import { Button, Modal } from 'react-bootstrap';
 import Loader from '../Loader';  // Import your custom Loader component
 import { Link } from 'react-router-dom';
+import { useAuthentication } from '../../hooks/useAuthentication.js';
 
 export const APIDemo = () => {
     const [userData, setUserData] = useState([]);
     const [show, setShow] = useState(false);
     const [userDetail, setUserDetail] = useState({});
     const [loading, setLoading] = useState(false); // Add loading state
+
+    const { isAdmin } = useAuthentication();
 
     const getAllUser = async () => {
         setLoading(true); // Set loading to true when API call starts
@@ -46,12 +49,12 @@ export const APIDemo = () => {
 
 
     return (
-        <div className="min-h-screen flex flex-col items-center justify-center p-4">
-            <h1 className="text-3xl font-bold mb-6">API DEMO</h1>
-            <table className="min-w-full bg-gray-200 rounded-lg shadow-md">
+        <div className="min-h-fit flex flex-col items-center justify-center p-4">
+            <h1 className="text-4xl font-bold mb-6 text-[#6b21a8]" style={{ fontFamily: "Mystery Quest, serif" }}>API DEMO</h1>
+            <table className="min-w-full bg-white rounded-lg shadow-md">
                 <thead>
-                    <tr className="bg-gray-400 text-left">
-                        <th className="py-2 px-4">Id</th>
+                    <tr className="bg-[#6b21a8] text-white text-left">
+                        {isAdmin && <th className="py-2 px-4">Id</th>}
                         <th className="py-2 px-4">Name</th>
                         <th className="py-2 px-4">Email</th>
                         <th className="py-2 px-4">Age</th>
@@ -61,7 +64,7 @@ export const APIDemo = () => {
                 <tbody>
                     {userData.map((user) => (
                         <tr className="border-b" key={user._id}>
-                            <td className="py-3 px-4">{user._id}</td>
+                            {isAdmin && <td className="py-3 px-4">{user._id}</td>}
                             <td className="py-3 px-4">{user.name}</td>
                             <td className="py-3 px-4">{user.email}</td>
                             <td className="py-3 px-4">{user.age}</td>
@@ -73,13 +76,15 @@ export const APIDemo = () => {
                                 >
                                     {loading ? <Loader /> : "Details"}
                                 </Button>
-                                <Button
-                                    variant="btn btn-danger"
-                                    onClick={() => { deleteUser(user._id) }}
-                                    disabled={loading} // Disable button while loading
-                                >
-                                    {loading ? <Loader /> : "Delete"}
-                                </Button>
+                                {isAdmin && (
+                                    <Button
+                                        variant="btn btn-danger"
+                                        onClick={() => { deleteUser(user._id) }}
+                                        disabled={loading} // Disable button while loading
+                                    >
+                                        {loading ? <Loader /> : "Delete"}
+                                    </Button>
+                                )}
                                 <Link to={`/navbar/edituser/${user._id}`} className='bg-green-500 p-2 text-white rounded'>
                                     {loading ? <Loader /> : "Update"}
                                 </Link>

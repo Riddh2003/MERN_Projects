@@ -8,7 +8,7 @@ export const UseMemo = () => {
     const expensiveValue = useMemo(() => computeExpensiveValue(number), [number]);
 
     return (
-        <div>
+        <div className="text-center">
             <h2 className="text-xl mb-2">Expensive Computation Result: {expensiveValue}</h2>
             <button className="bg-blue-400 rounded p-2 mr-2" onClick={() => setCount(count + 1)}>Increment Count ({count})</button>
             <button className="bg-blue-400 rounded p-2" onClick={() => setNumber(number + 1)}>Change Number ({number})</button>

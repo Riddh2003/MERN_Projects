@@ -40,7 +40,7 @@ export const MovieCards = () => {
     }
 
     return (
-        <div className="min-h-fit w-full flex flex-col items-center justify-center p-4">
+        <div className="min-h-fit max-w-full flex flex-col items-center justify-center p-4">
             <form onSubmit={handleSubmit(getMoviesData)} className="bg-white text-[#6b21a8] p-6 rounded-lg shadow w-full max-w-lg"
                 style={{
                     fontFamily: "Mystery Quest, serif",
@@ -58,9 +58,9 @@ export const MovieCards = () => {
             </form>
 
             {isSubmitted && (
-                <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                <div className="min-w-full mt-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
                     {movieData.map((movie, index) => (
-                        <Card key={index} sx={{ maxWidth: 345 }} className="shadow-lg h-96 min-w-56 bg-white text-[#6b21a8] rounded-md overflow-hidden"
+                        <Card key={index} sx={{ maxWidth: 345 }} className="shadow-lg h-96 bg-white text-[#6b21a8] rounded-md overflow-hidden"
                             style={{ fontFamily: "Mystery Quest, serif", }}>
                             <CardMedia
                                 component="img"

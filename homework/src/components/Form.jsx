@@ -49,7 +49,7 @@ export const Form = () => {
   };
 
   return (
-    <div className=" w-full h-full flex flex-col items-center justify-center">
+    <div className="min-h-fit flex flex-col items-center justify-center">
       <form
         onSubmit={handleSubmit(submitHandler)}
         className="bg-zinc-900 w-1/3 h-auto text-white flex flex-col rounded-xl m-6 p-6 space-y-4 shadow-xl"
