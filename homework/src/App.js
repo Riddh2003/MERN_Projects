@@ -10,6 +10,7 @@ import { APIDemo2 } from "./components/apis/APIDemo2";
 import { UseMemo } from "./components/apis/UseMemo.jsx";
 import { EditUser } from "./components/apis/EditUser.jsx";
 import { Bomb } from "./components/Bomb.jsx";
+import { Home } from "./components/Home.jsx";
 
 function App() {
     return (
@@ -17,6 +18,7 @@ function App() {
             <Navbar></Navbar>
             <div className="flex-grow p-4">
                 <Routes>
+                    <Route path="/" element={<Home />}></Route>
                     <Route path="/navbar/form" element={<Form />} ></Route>
                     <Route path="/navbar/exam" element={<Exam />} ></Route>
                     <Route path="/navbar/validationform" element={<ValidationForm />} ></Route>

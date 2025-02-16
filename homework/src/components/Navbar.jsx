@@ -3,13 +3,14 @@ import { Link } from "react-router-dom";
 
 export const Navbar = () => {
   return (
-    <div className="w-full h-full top-2 z-50 position-sticky">
+    <div className="w-full h-full top-2 z-50 position-sticky"
+      style={{
+        fontFamily: "Mystery Quest, serif",
+      }}
+    >
       <div className="navbar rounded-lg bg-white shadow-lg text-[#6b21a8] backdrop-blur-md">
         <div className="flex justify-between items-center px-4 py-1 gap-16">
           <Link className="text-5xl font-bold transition-all"
-            style={{
-              fontFamily: "Mystery Quest, serif",
-            }}
             to="/">
             Harry Potter
           </Link>

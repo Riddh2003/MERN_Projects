@@ -13,7 +13,7 @@ export const Exam = () => {
   };
 
   return (
-    <div className="flex flex-col items-center text-white justify-center h-screen">
+    <div className="flex flex-col items-center text-white justify-center min-h-fit">
       <form
         onSubmit={handleSubmit(submitHandler)}
         className="bg-zinc-900 p-6 rounded-lg shadow-md w-full max-w-md mb-6"
@@ -64,7 +64,7 @@ export const Exam = () => {
       </form>
       {isSubmited &&
         questions.map((question, index) => (
-          <div key={index} className="bg-white p-6 rounded-lg shadow-md w-full max-w-md mb-6">
+          <div key={index} className="bg-white text-[#6b21a8] p-6 rounded-lg shadow-md w-full max-w-md mb-6">
             <p className="text-2xl font-bold mb-4">Question {index + 1}</p>
             <p className="text-lg font-semibold mb-4">Q: {question.question}</p>
             <p className="text-lg font-semibold mb-4">A: {question.optionA}</p>
