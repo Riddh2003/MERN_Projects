@@ -70,6 +70,11 @@ export const Navbar = () => {
                   Bomb
                 </button>
               </li>
+              <li>
+                <button className="hover:text-black transition-all duration-300 transform hover:scale-105" onClick={() => handleNavigation("/navbar/memorygame")}>
+                  Memory Game
+                </button>
+              </li>
             </ul>
           </div>
           <div>

@@ -12,6 +12,7 @@ import { EditUser } from "./components/apis/EditUser.jsx";
 import { Bomb } from "./components/Bomb.jsx";
 import { Home } from "./components/Home.jsx";
 import { Login } from "./components/Login.jsx";
+import { MemoryGame } from "./components/MemoryGame.jsx";
 
 function App() {
     return (
@@ -31,6 +32,7 @@ function App() {
                     <Route path="/navbar/useMemo" element={<UseMemo />}></Route>
                     <Route path="/navbar/edituser/:id" element={<EditUser />}></Route>
                     <Route path="/navbar/bomb" element={<Bomb />}></Route>
+                    <Route path="/navbar/memorygame" element={<MemoryGame />}></Route>
                 </Routes>
             </div>
         </div>
