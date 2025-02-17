@@ -43,7 +43,7 @@ export const Login = () => {
                 }}>
                 <h1 className="text-2xl font-bold mb-4 text-center text-[#6b21a8]">Login</h1>
                 <div className="mb-4">
-                    <label className="block text-gray-700 font-semibold mb-2">Email</label>
+                    <label className="block text-[#6b21a8] mb-2">Email</label>
                     <input
                         type="text"
                         {...register('email')}
@@ -52,7 +52,7 @@ export const Login = () => {
                     />
                 </div>
                 <div className="mb-4">
-                    <label className="block text-gray-700 font-semibold mb-2">Password</label>
+                    <label className="block text-[#6b21a8] mb-2">Password</label>
                     <input
                         type="password"
                         {...register('password')}

@@ -11,7 +11,7 @@ export const Navbar = () => {
     setTimeout(() => {
       navigate(path);
       setLoading(false);
-    }, 1000); // Simulate a delay for the loader
+    }, 500);
   };
 
   return (

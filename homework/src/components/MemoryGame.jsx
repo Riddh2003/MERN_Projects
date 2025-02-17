@@ -24,7 +24,7 @@ export const MemoryGame = () => {
                             return (
                                 <div
                                     key={index}
-                                    className='w-[50px] h-[50px] border-1 border-purple-300 rounded bg-white'>
+                                    className='w-[50px] h-[50px] border-1 cursor-pointer border-purple-300 rounded bg-white'>
 
                                 </div>
                             );
