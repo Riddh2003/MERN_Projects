@@ -85,8 +85,10 @@ export const APIDemo = () => {
                                         {loading ? <Loader /> : "Delete"}
                                     </Button>
                                 )}
-                                <Link to={`/navbar/edituser/${user._id}`} className='bg-green-500 p-2 text-white rounded' style={{ fontFamily: "Mystery Quest, serif" }}>
-                                    {loading ? <Loader /> : "Update"}
+                                <Link to={`/navbar/edituser/${user._id}`} className='bg-green-500 px-3 py-2 text-white rounded' style={{ fontFamily: "Mystery Quest, serif" }}>
+                                    <button>
+                                        {loading ? <Loader /> : "Update"}
+                                    </button>
                                 </Link>
                             </td>
                         </tr>
