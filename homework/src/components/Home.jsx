@@ -9,7 +9,7 @@ export const Home = () => {
             }}
         >
             <h1 className='text-7xl text-[#6b21a8]'>
-                Welcome, to the world of Harry Potter!
+                🤗Welcome, to the world of Harry Potter!
             </h1>
         </div>
     );

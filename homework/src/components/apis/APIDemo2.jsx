@@ -43,7 +43,7 @@ export const APIDemo2 = () => {
     };
 
     return (
-        <div className="flex items-center justify-center min-h-fit">
+        <div className="min-h-fit flex items-center justify-center p-4">
             <ToastContainer
                 position="top-center"
                 autoClose={5000}
@@ -57,7 +57,7 @@ export const APIDemo2 = () => {
                 theme="dark"
                 transition={Bounce}
             />
-            <div className="w-full max-w-lg p-8 bg-black shadow-lg text-white rounded-lg">
+            <div className="w-full max-w-lg p-8 bg-white shadow text-[#6b21a8] rounded-lg" style={{ fontFamily: "Mystery Quest, serif" }}>
                 <h1 className="mb-6 text-3xl font-semibold text-center">
                     Add Student Data
                 </h1>
@@ -70,7 +70,7 @@ export const APIDemo2 = () => {
                             type="text"
                             {...register('name')}
                             placeholder="Enter Name"
-                            className="w-full px-4 py-2 text-gray-700 bg-gray-50 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                            className="w-full px-4 py-2 text-gray-700 bg-gray-50 border rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-900 focus:border-purple-900"
                         />
                     </div>
                     <div>
@@ -81,7 +81,7 @@ export const APIDemo2 = () => {
                             type="email"
                             {...register('email')}
                             placeholder="Enter Email"
-                            className="w-full px-4 py-2 text-gray-700 bg-gray-50 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                            className="w-full px-4 py-2 text-gray-700 bg-gray-50 border rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-900 focus:border-purple-900"
                         />
                     </div>
                     <div>
@@ -92,12 +92,12 @@ export const APIDemo2 = () => {
                             type="number"
                             {...register('age')}
                             placeholder="Enter Age"
-                            className="w-full px-4 py-2 text-gray-700 bg-gray-50 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                            className="w-full px-4 py-2 text-gray-700 bg-gray-50 border rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-900 focus:border-purple-900"
                         />
                     </div>
                     <button
                         type="submit"
-                        className="w-full px-4 py-2 text-white bg-blue-600 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+                        className="w-full px-4 py-2 text-white bg-purple-800 rounded-lg hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-purple-900 focus:ring-offset-2"
                     >
                         Submit
                     </button>

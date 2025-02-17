@@ -38,7 +38,7 @@ export const ValidationForm = () => {
     };
 
     const countries = {
-        India: ['Gujarat', 'Pune', 'Hydrabad', 'Banglore'],
+        India: ['Gujarat', 'Pune', 'Hyderabad', 'Bangalore'],
         USA: ['California', 'Texas', 'Florida', 'New York']
     };
     const password = watch('password', '');
@@ -48,28 +48,28 @@ export const ValidationForm = () => {
     const isMinLength = password.length >= 8;
 
     return (
-        <div className='min-h-screen flex items-center justify-center mt-6'>
-            <form onSubmit={handleSubmit(submitHandler)} className='bg-white rounded-lg w-1/3 p-6 shadow-lg'>
-                <h1 className='text-2xl font-bold mb-4'>Validation Form</h1>
+        <div className='min-h-fit flex items-center justify-center p-4'>
+            <form onSubmit={handleSubmit(submitHandler)} className='bg-white rounded-lg w-full max-w-lg p-6 shadow-md text-[#6b21a8]' style={{ fontFamily: "Mystery Quest, serif" }}>
+                <h1 className='text-4xl text-center font-bold mb-4'>Validation Form</h1>
                 <div className='mb-4'>
-                    <label className='block text-gray-700 font-semibold mb-2'>Name
+                    <label className='block text-[#6b21a8] font-semibold mb-2'>Name
                         <span className='text-red-600 ml-4 font-normal'>{errors.name?.message}</span>
                     </label>
                     <input
                         type='text'
                         placeholder='Enter Name'
-                        className='border-2 border-gray-500 rounded w-full p-2 mb-4'
+                        className='border-2 border-gray-300 rounded w-full p-2 mb-4 focus:outline-none focus:ring-2 focus:ring-purple-900'
                         {...register('name', validationSchema.name)}
                     />
                 </div>
                 <div className='mb-4'>
-                    <label className='block text-gray-700 font-semibold mb-2'>Password
+                    <label className='block text-[#6b21a8] font-semibold mb-2'>Password
                         <span className='text-red-600 ml-4 font-normal'>{errors.password?.message}</span>
                     </label>
                     <input
                         type='password'
                         placeholder='Enter Password'
-                        className='border-2 border-gray-500 rounded w-full p-2 mb-4'
+                        className='border-2 border-gray-300 rounded w-full p-2 mb-4 focus:outline-none focus:ring-2 focus:ring-purple-900'
                         {...register('password', validationSchema.password)}
                     />
                     <div className='mb-4'>
@@ -78,7 +78,7 @@ export const ValidationForm = () => {
                         <li className={isMinLength ? 'text-green-600' : 'text-red-600'}>Password minimum length is 8</li>
                     </div>
                 </div>
-                <label className='block text-gray-700 font-semibold mb-2'>Hobby
+                <label className='block text-[#6b21a8] font-semibold mb-2'>Hobby
                     <span className='text-red-600 ml-4 font-normal'>{errors.hobby?.message}</span>
                 </label>
                 <div className='flex flex-col items-start'>
@@ -108,9 +108,9 @@ export const ValidationForm = () => {
                     </label>
                 </div>
                 <div className=''>
-                    <label className='block text-gray-700 font-semibold mb-2'>Country:</label>
+                    <label className='block text-[#6b21a8] font-semibold mb-2'>Country:</label>
                     <select
-                        className='border-2 border-gray-500 rounded w-full p-2 mb-4'
+                        className='border-2 text-gray-700 border-gray-300 rounded w-full p-2 mb-4 focus:outline-none focus:ring-2 focus:ring-purple-900'
                         onChange={(e) => setSelectedCountry(e.target.value)}
                     >
                         <option value=''>Select Country</option>
@@ -123,8 +123,8 @@ export const ValidationForm = () => {
                 </div>
                 {selectedCountry && (
                     <div className=''>
-                        <label className='block text-gray-700 font-semibold mb-2'>State:</label>
-                        <select className='border-2 border-gray-500 rounded w-full p-2 mb-4'>
+                        <label className='block text-[#6b21a8] font-semibold mb-2'>State:</label>
+                        <select className='border-2 text-gray-700 border-gray-300 rounded w-full p-2 mb-4 focus:outline-none focus:ring-2 focus:ring-purple-900'>
                             <option value=''>Select State</option>
                             {countries[selectedCountry].map((state) => (
                                 <option key={state} value={state}>
@@ -134,13 +134,13 @@ export const ValidationForm = () => {
                         </select>
                     </div>
                 )}
-                <button type='submit' className='bg-blue-500 text-white rounded-md p-2 mt-4 hover:bg-blue-600'>
+                <button type='submit' className='bg-purple-800 text-white rounded-md p-2 mt-4 hover:bg-purple-700 transition duration-300'>
                     Submit
                 </button>
             </form>
             {isSubmited && (
-                <div className='mt-4'>
-                    <h2 className='text-xl font-bold'>Submitted Data</h2>
+                <div className='mt-6 p-4 bg-white rounded-lg shadow-md w-full max-w-lg text-[#6b21a8]' style={{ fontFamily: "Mystery Quest, serif" }}>
+                    <h2 className='text-2xl font-bold mb-4'>Submitted Data</h2>
                     <p>Name: {userData.name}</p>
                     <p>Password: {userData.password}</p>
                 </div>

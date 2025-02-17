@@ -80,12 +80,12 @@ export const APIDemo = () => {
                                     <Button
                                         variant="btn btn-danger"
                                         onClick={() => { deleteUser(user._id) }}
-                                        disabled={loading} // Disable button while loading
+                                    // Disable button while loading
                                     >
                                         {loading ? <Loader /> : "Delete"}
                                     </Button>
                                 )}
-                                <Link to={`/navbar/edituser/${user._id}`} className='bg-green-500 p-2 text-white rounded'>
+                                <Link to={`/navbar/edituser/${user._id}`} className='bg-green-500 p-2 text-white rounded' style={{ fontFamily: "Mystery Quest, serif" }}>
                                     {loading ? <Loader /> : "Update"}
                                 </Link>
                             </td>
@@ -95,14 +95,18 @@ export const APIDemo = () => {
             </table>
             <Modal show={show} onHide={() => setShow(false)}>
                 <Modal.Header closeButton>
-                    <Modal.Title>User Details</Modal.Title>
+                    <Modal.Title className='font-medium text-3xl' style={{ color: '#6b21a8', fontFamily: "Mystery Quest, serif" }}>User Details</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <h1 className="text-2xl">{userDetail.name}</h1>
-                    <p className="text-xl">{userDetail.email}</p>
+                    <p className="text-xl" style={{ color: '#6b21a8', fontFamily: "Mystery Quest, serif" }}>Name : {userDetail.name}</p>
+                    <p className="text-xl" style={{
+                        color: '#6b21a8', fontFamily: "Mystery Quest, serif"
+                    }}>Email : {userDetail.email}</p>
                 </Modal.Body>
                 <Modal.Footer>
-                    <Button variant="secondary" onClick={() => setShow(false)}>
+                    <Button variant="secondary" onClick={() => setShow(false)}
+                        className='bg-purple-800 hover:bg-purple-700'
+                        style={{ color: 'white', fontFamily: "Mystery Quest, serif" }} >
                         Close
                     </Button>
                 </Modal.Footer>

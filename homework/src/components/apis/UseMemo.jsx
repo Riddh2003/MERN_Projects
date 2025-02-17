@@ -8,10 +8,18 @@ export const UseMemo = () => {
     const expensiveValue = useMemo(() => computeExpensiveValue(number), [number]);
 
     return (
-        <div className="text-center">
-            <h2 className="text-xl mb-2">Expensive Computation Result: {expensiveValue}</h2>
-            <button className="bg-blue-400 rounded p-2 mr-2" onClick={() => setCount(count + 1)}>Increment Count ({count})</button>
-            <button className="bg-blue-400 rounded p-2" onClick={() => setNumber(number + 1)}>Change Number ({number})</button>
+        <div className="min-h-fit flex items-center justify-center p-4">
+            <div className="bg-white text-[#6b21a8] p-6 rounded-lg shadow w-full max-w-lg" style={{ fontFamily: "Mystery Quest, serif" }}>
+                <h2 className="text-3xl mb-6 text-center">Expensive Computation Result: {expensiveValue}</h2>
+                <div className="flex justify-center space-x-4">
+                    <button className="bg-purple-800 text-white rounded px-4 py-2 hover:bg-purple-700 transition duration-300" onClick={() => setCount(count + 1)}>
+                        Increment Count ({count})
+                    </button>
+                    <button className="bg-purple-800 text-white rounded px-4 py-2 hover:bg-purple-700 transition duration-300" onClick={() => setNumber(number + 1)}>
+                        Change Number ({number})
+                    </button>
+                </div>
+            </div>
         </div>
     );
 };

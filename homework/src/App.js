@@ -15,7 +15,7 @@ import { Login } from "./components/Login.jsx";
 
 function App() {
     return (
-        <div className="universe-bg flex flex-col px-3 py-2 w-[100vw] h-[100vh]">
+        <div className="universe-bg flex flex-col px-3 py-2 w-full h-[100vh]">
             <Navbar></Navbar>
             <div className="flex-grow p-4">
                 <Routes>

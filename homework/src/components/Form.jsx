@@ -20,7 +20,7 @@ export const Form = () => {
     name: {
       required: {
         value: true,
-        massage: "Name is required*"
+        message: "Name is required*"
       }
     },
     age: {
@@ -44,25 +44,24 @@ export const Form = () => {
         value: true,
         message: "RefCode is required*"
       },
-      validate: value => value === "royal" || "jagrut" || "Invalid refCode"
+      validate: value => value === "royal" || value === "jagrut" || "Invalid refCode"
     }
   };
 
   return (
-    <div className="min-h-fit flex flex-col items-center justify-center">
+    <div className="min-h-fit flex flex-col items-center justify-center p-4">
       <form
         onSubmit={handleSubmit(submitHandler)}
-        className="bg-zinc-900 w-1/3 h-auto text-white flex flex-col rounded-xl m-6 p-6 space-y-4 shadow-xl"
+        className="bg-white w-full max-w-lg text-[#6b21a8] flex flex-col rounded-lg p-6 space-y-4 shadow-md"
+        style={{ fontFamily: "Mystery Quest, serif" }}
       >
-        <p className="text-4xl text-center font-semibold">
-          Student Application
-        </p>
+        <p className="text-4xl text-center font-bold mb-4">Student Application</p>
         <div className="flex flex-col">
           <label className="mb-1">Name:</label>
           <input
             type="text"
             placeholder="Enter Name"
-            className="rounded-md p-2 text-black border border-gray-300"
+            className="rounded-md p-2 text-black border-2 border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-900"
             {...register("name", validationSchema.name)}
           />
           <p className="text-red-400">{errors.name?.message}</p>
@@ -72,18 +71,18 @@ export const Form = () => {
           <input
             type="number"
             placeholder="Enter Age"
-            className="rounded-md p-2 text-black border border-gray-300"
+            className="rounded-md p-2 text-black border-2 border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-900"
             {...register("age", validationSchema.age)}
           />
           <p className="text-red-400">{errors.age?.message}</p>
         </div>
         <div className="flex flex-col">
-          <label className="mb-1">refCode:</label>
+          <label className="mb-1">RefCode:</label>
           <input
             type="text"
-            placeholder="Enter refCode"
-            className="rounded-md p-2 text-black border border-gray-300"
-            {...register("refCode", validationSchema.refCodde)}
+            placeholder="Enter RefCode"
+            className="rounded-md p-2 text-black border-2 border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-900"
+            {...register("refCode", validationSchema.refCode)}
           />
           <p className="text-red-400">{errors.refCode?.message}</p>
         </div>
@@ -117,7 +116,7 @@ export const Form = () => {
           <input
             type="email"
             placeholder="Enter Email"
-            className="rounded-md p-2 text-black border border-gray-300"
+            className="rounded-md p-2 text-black border-2 border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-900"
             {...register("email")}
           />
         </div>
@@ -126,15 +125,16 @@ export const Form = () => {
           <input
             type="tel"
             placeholder="Enter Phone Number"
-            className="rounded-md p-2 text-black border border-gray-300"
+            className="rounded-md p-2 text-black border-2 border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-900"
             {...register("phoneNo")}
           />
+          <p className="text-red-400">{errors.phoneNo?.message}</p>
         </div>
         <div className="flex flex-col">
           <label className="mb-1">Address:</label>
           <textarea
             placeholder="Enter Address"
-            className="rounded-md p-2 text-black border border-gray-300"
+            className="rounded-md p-2 text-black border-2 border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-900"
             {...register("address")}
           />
         </div>
@@ -175,13 +175,13 @@ export const Form = () => {
         </div>
         <button
           type="submit"
-          className="bg-blue-500 text-white rounded-md p-2 mt-4 hover:bg-blue-600"
+          className="bg-purple-800 text-white rounded-md p-2 mt-4 hover:bg-purple-700 transition duration-300"
         >
           Submit
         </button>
       </form>
       {isSubmited && (
-        <div className="mt-6 p-4 bg-white rounded-xl shadow-md w-1/3">
+        <div className="mt-6 p-4 bg-white rounded-lg shadow-md w-full max-w-lg text-[#6b21a8]" style={{ fontFamily: "Mystery Quest, serif" }}>
           <h1 className="text-2xl font-bold mb-4">Result</h1>
           <h2>Name: {userData.name}</h2>
           <h2>Age: {userData.age}</h2>
