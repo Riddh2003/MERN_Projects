@@ -49,52 +49,54 @@ export const APIDemo = () => {
 
 
     return (
-        <div className="min-h-fit flex flex-col items-center justify-center p-4">
+        <div className="min-h-screen flex flex-col items-center justify-center p-4">
             <h1 className="text-4xl font-bold mb-6 text-[#6b21a8]" style={{ fontFamily: "Mystery Quest, serif" }}>API DEMO</h1>
-            <table className="min-w-full bg-white rounded-lg shadow-md">
-                <thead>
-                    <tr className="bg-[#6b21a8] text-white text-left">
-                        {isAdmin && <th className="py-2 px-4">Id</th>}
-                        <th className="py-2 px-4">Name</th>
-                        <th className="py-2 px-4">Email</th>
-                        <th className="py-2 px-4">Age</th>
-                        <th className="py-2 px-4">Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {userData.map((user) => (
-                        <tr className="border-b" key={user._id}>
-                            {isAdmin && <td className="py-3 px-4">{user._id}</td>}
-                            <td className="py-3 px-4">{user.name}</td>
-                            <td className="py-3 px-4">{user.email}</td>
-                            <td className="py-3 px-4">{user.age}</td>
-                            <td className="flex gap-2 py-3 px-4">
-                                <Button
-                                    variant="btn btn-info"
-                                    onClick={() => { detailUser(user._id) }}
-                                    disabled={loading} // Disable button while loading
-                                >
-                                    {loading ? <Loader /> : "Details"}
-                                </Button>
-                                {isAdmin && (
-                                    <Button
-                                        variant="btn btn-danger"
-                                        onClick={() => { deleteUser(user._id) }}
-                                    // Disable button while loading
-                                    >
-                                        {loading ? <Loader /> : "Delete"}
-                                    </Button>
-                                )}
-                                <Link to={`/navbar/edituser/${user._id}`} className='bg-green-500 px-3 py-2 text-white rounded' style={{ fontFamily: "Mystery Quest, serif" }}>
-                                    <button>
-                                        {loading ? <Loader /> : "Update"}
-                                    </button>
-                                </Link>
-                            </td>
+            <div className="overflow-x-auto w-full">
+                <table className="bg-white w-full max-w-7xl rounded-lg shadow-md">
+                    <thead>
+                        <tr className="bg-[#6b21a8] text-white text-left">
+                            {isAdmin && <th className="py-2 px-4">Id</th>}
+                            <th className="py-2 px-4">Name</th>
+                            <th className="py-2 px-4">Email</th>
+                            <th className="py-2 px-4">Age</th>
+                            <th className="py-2 px-4">Action</th>
                         </tr>
-                    ))}
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                        {userData.map((user) => (
+                            <tr className="border-b" key={user._id}>
+                                {isAdmin && <td className="py-3 px-4">{user._id}</td>}
+                                <td className="py-3 px-4">{user.name}</td>
+                                <td className="py-3 px-4">{user.email}</td>
+                                <td className="py-3 px-4">{user.age}</td>
+                                <td className="flex gap-2 py-3 px-4">
+                                    <Button
+                                        variant="btn btn-info"
+                                        onClick={() => { detailUser(user._id) }}
+                                        disabled={loading} // Disable button while loading
+                                    >
+                                        {loading ? <Loader /> : "Details"}
+                                    </Button>
+                                    {isAdmin && (
+                                        <Button
+                                            variant="btn btn-danger"
+                                            onClick={() => { deleteUser(user._id) }}
+                                            disabled={loading} // Disable button while loading
+                                        >
+                                            {loading ? <Loader /> : "Delete"}
+                                        </Button>
+                                    )}
+                                    <Link to={`/navbar/edituser/${user._id}`} className='bg-green-500 px-3 py-2 text-white rounded' style={{ fontFamily: "Mystery Quest, serif" }}>
+                                        <button>
+                                            {loading ? <Loader /> : "Update"}
+                                        </button>
+                                    </Link>
+                                </td>
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
+            </div>
             <Modal show={show} onHide={() => setShow(false)}>
                 <Modal.Header closeButton>
                     <Modal.Title className='font-medium text-3xl' style={{ color: '#6b21a8', fontFamily: "Mystery Quest, serif" }}>User Details</Modal.Title>
