@@ -13,6 +13,7 @@ import { Bomb } from "./components/Bomb.jsx";
 import { Home } from "./components/Home.jsx";
 import { Login } from "./components/Login.jsx";
 import { MemoryGame } from "./components/MemoryGame.jsx";
+import { Product } from "./components/Product.jsx";
 
 function App() {
     return (
@@ -33,6 +34,7 @@ function App() {
                     <Route path="/navbar/edituser/:id" element={<EditUser />}></Route>
                     <Route path="/navbar/bomb" element={<Bomb />}></Route>
                     <Route path="/navbar/memorygame" element={<MemoryGame />}></Route>
+                    <Route path="/navbar/product" element={<Product />}></Route>
                 </Routes>
             </div>
         </div>

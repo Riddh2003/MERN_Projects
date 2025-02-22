@@ -75,6 +75,11 @@ export const Navbar = () => {
                   Memory Game
                 </button>
               </li>
+              <li>
+                <button className="hover:text-black transition-all duration-300 transform hover:scale-105" onClick={() => handleNavigation("/navbar/product")}>
+                  Product
+                </button>
+              </li>
             </ul>
           </div>
           <div>
