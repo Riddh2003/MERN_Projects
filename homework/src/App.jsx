@@ -15,10 +15,17 @@ import { Login } from "./components/Login.jsx";
 import { MemoryGame } from "./components/MemoryGame.jsx";
 import { Product } from "./components/Product.jsx";
 import { Bank } from "./components/Bank.jsx";
+import { useSelector } from "react-redux";
+import { StudentTable } from "./components/StudentTable.jsx";
+import { StudentTable2 } from "./components/StudentTable2.jsx";
+import { Task } from "./components/Task.jsx";
+
+
 
 function App() {
+    const themestate = useSelector((state) => state.theme.theme);
     return (
-        <div className="universe-bg flex flex-col px-3 py-2 w-full h-[100vh]">
+        <div className="universe-bg flex flex-col px-3 py-2 w-full h-[100vh]" style={{ backgroundColor: themestate === 'white' ? 'white' : '#3f3f46' }}>
             <Navbar></Navbar>
             <div className="flex-grow p-4">
                 <Routes>
@@ -37,8 +44,11 @@ function App() {
                     <Route path="/navbar/memorygame" element={<MemoryGame />}></Route>
                     <Route path="/navbar/product" element={<Product />}></Route>
                     <Route path="/navbar/bank" element={<Bank />}></Route>
+                    <Route path="/navber/studenttable" element={<StudentTable />}></Route>
+                    <Route path="/navber/studenttable2" element={<StudentTable2 />}></Route>
+                    <Route path="/task" element={<Task />}></Route>s
 
-                    <Route path="/*"></Route>
+                    <Route path="/*" element></Route>
                 </Routes>
             </div>
         </div>
