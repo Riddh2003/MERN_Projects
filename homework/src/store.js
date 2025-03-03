@@ -4,6 +4,7 @@ import bankSlice from './redux/bankSlice';
 import themeSlice from './redux/themeSlice';
 import studentSlice from './redux/studentRecordSlice';
 import taskSlice from './redux/taskSlice';
+import contentSlice from './redux/contentSlice';
 
 export const store = configureStore({
     reducer: {
@@ -11,6 +12,7 @@ export const store = configureStore({
         bank: bankSlice,
         theme: themeSlice,
         student: studentSlice,
-        task: taskSlice
+        task: taskSlice,
+        content: contentSlice
     }
 })

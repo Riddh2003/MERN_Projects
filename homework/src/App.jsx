@@ -19,6 +19,7 @@ import { useSelector } from "react-redux";
 import { StudentTable } from "./components/StudentTable.jsx";
 import { StudentTable2 } from "./components/StudentTable2.jsx";
 import { Task } from "./components/Task.jsx";
+import { Content } from "./components/Content.jsx";
 
 
 
@@ -46,7 +47,8 @@ function App() {
                     <Route path="/navbar/bank" element={<Bank />}></Route>
                     <Route path="/navber/studenttable" element={<StudentTable />}></Route>
                     <Route path="/navber/studenttable2" element={<StudentTable2 />}></Route>
-                    <Route path="/task" element={<Task />}></Route>s
+                    <Route path="/task" element={<Task />}></Route>
+                    <Route path="/content" element={<Content />}></Route>
 
                     <Route path="/*" element></Route>
                 </Routes>

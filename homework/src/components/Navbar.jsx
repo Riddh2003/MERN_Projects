@@ -33,8 +33,8 @@ export const Navbar = () => {
           >
             Harry Potter
           </Link>
-          <div className="hidden lg:flex gap-4 text-lg">
-            <ul className="flex gap-3">
+          <div className="hidden lg:flex gap-8 text-lg">
+            <ul className="flex gap-8">
               <li>
                 <button className="transition-all duration-300 transform hover:scale-105" onClick={() => handleNavigation("/navbar/form")}>
                   Form
@@ -65,7 +65,7 @@ export const Navbar = () => {
                   API Demo2
                 </button>
               </li>
-              <li>
+              {/* <li>
                 <button className="transition-all duration-300 transform hover:scale-105" onClick={() => handleNavigation("/navbar/usememo")}>
                   Use Memo
                 </button>
@@ -94,10 +94,15 @@ export const Navbar = () => {
                 <button className="transition-all duration-300 transform hover:scale-105" onClick={() => handleNavigation("/navber/studenttable")}>
                   Student Table
                 </button>
-              </li>
+              </li> */}
               <li>
                 <button className="transition-all duration-300 transform hover:scale-105" onClick={() => handleNavigation("/navber/studenttable2")}>
                   Student Table2
+                </button>
+              </li>
+              <li>
+                <button className="transition-all duration-300 transform hover:scale-105" onClick={() => handleNavigation("/content")}>
+                  Content
                 </button>
               </li>
               <li onChange={() => { dispatch(changeTheme()) }}>
