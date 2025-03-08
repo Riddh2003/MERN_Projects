@@ -20,106 +20,58 @@ export const Navbar = () => {
   const themestate = useSelector((state) => state.theme.theme);
 
   return (
-    <div className="h-fit top-2 z-50 position-sticky"
+    <div className="sticky top-0 z-50 w-full"
       style={{
         fontFamily: "Mystery Quest, serif",
       }}
     >
       {loading && <Loader />}
-      <div className={`navbar w-full rounded-lg shadow ${themestate === 'white' ? 'bg-white text-[#6b21a8]' : 'text-white bg-black'} backdrop-blur-md`}>
-        <div className="w-full flex justify-between items-center px-4 py-1">
-          <Link className="text-4xl font-bold transition-all"
+      <div className={`w-full px-4 py-3 shadow-lg transition-all duration-300 ${themestate === 'white' ? 'bg-white text-purple-900' : 'bg-gray-900 text-white'}`}>
+        <div className="container mx-auto flex items-center justify-between">
+          <Link
+            className="text-3xl font-bold hover:text-purple-600 transition-all duration-300"
             onClick={() => handleNavigation('/')}
           >
             Harry Potter
           </Link>
-          <div className="hidden lg:flex gap-8 text-lg">
-            <ul className="flex gap-8">
-              <li>
-                <button className="transition-all duration-300 transform hover:scale-105" onClick={() => handleNavigation("/navbar/form")}>
-                  Form
-                </button>
-              </li>
-              <li>
-                <button className="transition-all duration-300 transform hover:scale-105" onClick={() => handleNavigation("/navbar/exam")}>
-                  Exam
-                </button>
-              </li>
-              <li>
-                <button className="transition-all duration-300 transform hover:scale-105" onClick={() => handleNavigation("/navbar/validationform")}>
-                  Validation Form
-                </button>
-              </li>
-              <li>
-                <button className="transition-all duration-300 transform hover:scale-105" onClick={() => handleNavigation("/navbar/apidemo")}>
-                  API Demo
-                </button>
-              </li>
-              <li>
-                <button className="transition-all duration-300 transform hover:scale-105" onClick={() => handleNavigation("/navbar/movies")}>
-                  Movies
-                </button>
-              </li>
-              <li>
-                <button className="transition-all duration-300 transform hover:scale-105" onClick={() => handleNavigation("/navbar/apidemo2")}>
-                  API Demo2
-                </button>
-              </li>
-              {/* <li>
-                <button className="transition-all duration-300 transform hover:scale-105" onClick={() => handleNavigation("/navbar/usememo")}>
-                  Use Memo
-                </button>
-              </li>
-              <li>
-                <button className="transition-all duration-300 transform hover:scale-105" onClick={() => handleNavigation("/navbar/bomb")}>
-                  Bomb
-                </button>
-              </li>
-              <li>
-                <button className="transition-all duration-300 transform hover:scale-105" onClick={() => handleNavigation("/navbar/memorygame")}>
-                  Memory Game
-                </button>
-              </li>
-              <li>
-                <button className="transition-all duration-300 transform hover:scale-105" onClick={() => handleNavigation("/navbar/product")}>
-                  Product
-                </button>
-              </li>
-              <li>
-                <button className="transition-all duration-300 transform hover:scale-105" onClick={() => handleNavigation("/navbar/bank")}>
-                  Bank
-                </button>
-              </li>
-              <li>
-                <button className="transition-all duration-300 transform hover:scale-105" onClick={() => handleNavigation("/navber/studenttable")}>
-                  Student Table
-                </button>
-              </li> */}
-              <li>
-                <button className="transition-all duration-300 transform hover:scale-105" onClick={() => handleNavigation("/navber/studenttable2")}>
-                  Student Table2
-                </button>
-              </li>
-              <li>
-                <button className="transition-all duration-300 transform hover:scale-105" onClick={() => handleNavigation("/content")}>
-                  Content
-                </button>
-              </li>
-              <li onChange={() => { dispatch(changeTheme()) }}>
-                <Switch />
-              </li>
-            </ul>
-          </div>
-          <div>
-            <Link className="text-white shadow px-3 py-2 bg-[#6b21a8] rounded text-xl transition-all duration-300 transform hover:scale-105" onClick={() => handleNavigation('/login')}
+
+          <div className="hidden lg:flex items-center space-x-8">
+            <nav>
+              <ul className="flex items-center space-x-6">
+                {[
+                  { path: "/navbar/form", label: "Form" },
+                  { path: "/navbar/exam", label: "Exam" },
+                  { path: "/navbar/validationform", label: "Validation Form" },
+                  { path: "/navbar/apidemo", label: "API Demo" },
+                  { path: "/navbar/movies", label: "Movies" },
+                  { path: "/navbar/apidemo2", label: "API Demo2" },
+                  { path: "/navber/studenttable2", label: "Student Table2" },
+                  { path: "/content", label: "Content" },
+                ].map((item) => (
+                  <li key={item.path}>
+                    <button
+                      onClick={() => handleNavigation(item.path)}
+                      className="text-base font-medium hover:text-purple-600 transition-all duration-300"
+                    >
+                      {item.label}
+                    </button>
+                  </li>
+                ))}
+                <li className="flex items-center" onChange={() => { dispatch(changeTheme()) }}>
+                  <Switch />
+                </li>
+              </ul>
+            </nav>
+
+            <Link
+              onClick={() => handleNavigation('/login')}
+              className="px-4 py-2 bg-purple-700 text-white rounded-lg hover:bg-purple-800 transition-all duration-300 shadow-md hover:shadow-lg"
             >
-              <button>
-                Login
-              </button>
+              Login
             </Link>
           </div>
         </div>
       </div>
-    </div >
+    </div>
   );
 };
