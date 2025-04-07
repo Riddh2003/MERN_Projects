@@ -1,0 +1,56 @@
+1) Find all students.
+-> db.users.find()
+
+2) Find students who live in Ahmedabad.
+-> db.students.find({"address.city":"ahmedabad"})
+
+3) Find students who have enrolled in the "java" course.
+-> db.students.find({"courses":"java"})
+
+4) Find students whose age is greater than 22.
+-> db.students.find({"age":{$gt:22}})
+
+5) Find students whose marks are greater than or equal to 75.
+-> db.students.find({"marks":{$gte:75}})
+
+6) Find students who are taking both "java" and "python" courses.
+-> db.students.find({"courses":{$all:["java","python"]}})
+
+7) Find students who do not have "python" in their courses.
+-> db.students.find({"courses":{$nin:["python"]}})
+
+8) Find students whose name is "jay".
+-> db.students.find({"name":"jay"})
+
+9) Find students who have marks between 70 and 80.
+-> db.students.find({"marks":{$lte:80,$gte:70}})
+
+10) Find students who live in Pune and are taking the "java" course.
+-> db.students.find({$and:[{"address.city":"pune"},{"courses":"java"}]})
+
+11) Find students who are enrolled in more than one course.
+-> db.students.find({"courses.1":{$exists:true}})
+
+12) Find students whose name starts with "r".
+-> db.students.find({"name":{$regex:"^r"}})
+
+13) Find students who have marks greater than 70 but less than 80.
+-> db.students.find({"marks":{$lt:80,$gt:70}})
+
+14) Find students who have "java" in their courses but not "python".
+-> db.students.find({"courses":"java","courses":{$ne:"python"}})
+
+15) Find students who do not have "java" in their courses.
+-> db.students.find({"courses":{$nin:["java"]}})
+
+16) Find students who have an address field present.
+-> db.students.find({"address":{$exists:true}})
+
+17) Find students who have at least one course.
+-> db.students.find({"courses.0":{$exists:true}})
+
+18) Find students whose marks are either 71 or 78.
+-> db.students.find({"marks":{$in:[71,78]}})
+
+19) Find students who are younger than 25 and have taken "python" as a course.
+-> db.students.find({$and:[{"age":{$lt:25}},{courses:"python"}]})

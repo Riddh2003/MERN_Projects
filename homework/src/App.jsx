@@ -20,6 +20,7 @@ import { StudentTable } from "./components/StudentTable.jsx";
 import { StudentTable2 } from "./components/StudentTable2.jsx";
 import { Task } from "./components/Task.jsx";
 import { Content } from "./components/Content.jsx";
+import { MUI } from "./components/MUI.jsx";
 
 
 
@@ -49,6 +50,7 @@ function App() {
                     <Route path="/navber/studenttable2" element={<StudentTable2 />}></Route>
                     <Route path="/task" element={<Task />}></Route>
                     <Route path="/content" element={<Content />}></Route>
+                    <Route path="/navbar/mui" element={<MUI />}></Route>
 
                     <Route path="/*" element></Route>
                 </Routes>
