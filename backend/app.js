@@ -107,4 +107,3 @@ app.listen(PORT, () => {
 const user = require("./user")
 console.log(user.userName, user.userAge)
 console.log(user.test(12))
-
