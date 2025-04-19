@@ -65,9 +65,18 @@ const getUserByName = async (req, res) => {
     }
 }
 
+const addUser = async (req, res) => {
+    const saveduser = await userModel.create(req.body)
+    res.json({
+        message: "User Successfully Add....",
+        data: saveduser
+    })
+}
+
 
 module.exports = {
     getAllUsers,
     getUserById,
-    getUserByName
+    getUserByName,
+    addUser
 }
