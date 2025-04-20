@@ -16,9 +16,16 @@ const userSchema = new Schema({
         type: Boolean,
         default: true
     },
-    sports: {
-        type: Array
+    sports: [
+        {
+            type: String
+        }
+    ],
+    bloodgroups: {
+        enum: ["A+", "B+", "A-", "B-", "O+"],
+        type: String
     }
-})
+
+}, { timestamps: true })
 
 module.exports = mongoose.model('users', userSchema);

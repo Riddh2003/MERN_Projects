@@ -66,11 +66,41 @@ const getUserByName = async (req, res) => {
 }
 
 const addUser = async (req, res) => {
-    const saveduser = await userModel.create(req.body)
-    res.json({
-        message: "User Successfully Add....",
-        data: saveduser
-    })
+    try {
+        const saveduser = await userModel.create(req.body)
+        res.status(201).json({
+            message: "User Successfully Add....",
+            data: saveduser
+        })
+    } catch (error) {
+        res.status(500).json({
+            message: "Internal Server Error",
+            data: error
+        })
+    }
+
+}
+
+const deleteUser = async (req, res) => {
+    try {
+        const user = await userModel.findByIdAndDelete(req.params.id)
+        if (user) {
+            res.status(204).json({
+                message: "User Deleted....",
+                data: user
+            })
+        }
+        else {
+            res.status(404).json({
+                message: "User not found for delete...",
+            })
+        }
+    } catch (error) {
+        res.status(500).json({
+            message: "Internal server error...",
+            data: user
+        })
+    }
 }
 
 
@@ -78,5 +108,6 @@ module.exports = {
     getAllUsers,
     getUserById,
     getUserByName,
-    addUser
+    addUser,
+    deleteUser
 }
