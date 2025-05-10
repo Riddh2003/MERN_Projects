@@ -2,7 +2,10 @@ const userModel = require('../models/UserModel');
 
 const getAllUsers = async (req, res) => {
 
-    const users = await userModel.find();
+    const users = await userModel.find().populate({
+        path: 'role',
+        select: 'name'
+    });// role -> it's just columnName;
 
     if (users.length > 0) {
         res.json({
@@ -103,11 +106,61 @@ const deleteUser = async (req, res) => {
     }
 }
 
+const updateUser = async (req, res) => {
+    const userId = req.params.id;
+    const dataToUpdate = req.body;
+    try {
+        const updatedUser = await userModel.findByIdAndUpdate(
+            userId,
+            dataToUpdate,
+            { new: true }
+        );
+        if (updatedUser) {
+            res.status(200).json({
+                message: "user updated...",
+                data: updatedUser
+            })
+        } else {
+            res.status(404).json({
+                message: "Internal server error"
+            });
+        }
+    } catch (error) {
+        res.status(500).json({
+            message: "Internal server error",
+            data: error
+        })
+    }
+}
+
+const addHobby = async (req, res) => {
+    const userId = req.params.id;
+    const sportName = req.body.sportName;
+    const updatedUser = await userModel.findByIdAndUpdate(
+        userId,
+        {
+            $push: { sports: sportName }
+        },
+        { new: true }
+    );
+    if (updatedUser) {
+        res.status(200).json({
+            message: "Hobby Added",
+            data: updatedUser
+        })
+    } else {
+        res.status(404).json({
+            message: "User not found"
+        })
+    }
+}
 
 module.exports = {
     getAllUsers,
     getUserById,
     getUserByName,
     addUser,
-    deleteUser
+    deleteUser,
+    updateUser,
+    addHobby
 }

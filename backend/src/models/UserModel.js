@@ -24,8 +24,15 @@ const userSchema = new Schema({
     bloodgroups: {
         enum: ["A+", "B+", "A-", "B-", "O+"],
         type: String
+    },
+    // roleId: {
+    //     type: Schema.Types.ObjectId,
+    //     ref: "role"
+    // }
+    role: {
+        type: Schema.Types.ObjectId,
+        ref: "role"
     }
-
 }, { timestamps: true })
 
 module.exports = mongoose.model('users', userSchema);
