@@ -19,9 +19,8 @@ const mailsend = async (to, subject, text) => {
     const mailResponse = await transporter.sendMail(mailOptions);
     console.log(mailResponse);
 }
-mailsend("riddhmodi2003@gmail.com", "Welcome Mail", "Hi welcome to our website, we are glad to have you here");
 
+module.exports = {
+    mailsend
+}
 
-// module.exports = {
-//     mailsend
-// }

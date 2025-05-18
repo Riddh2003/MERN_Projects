@@ -1,4 +1,5 @@
 const userModel = require('../models/UserModel');
+const { mailsend } = require('../utils/MailUtil');
 
 const getAllUsers = async (req, res) => {
 
@@ -155,6 +156,57 @@ const addHobby = async (req, res) => {
     }
 }
 
+const forgotpassword = async (req, res) => {
+    try {
+        const email = await userModel.find({ email: req.body.email })
+        if (email) {
+            const mailResponse = await mailsend("riddhmodi2003@gmail.com", "Reset Password Url", `localhost:3000/user/resetpassword?email='${req.body.email}'`)
+            res.status(201).json({
+                message: "You got the email...",
+                data: mailResponse
+            })
+        }
+        else {
+            res.status(403).json({
+                message: "Email not found",
+                data: []
+            })
+        }
+    } catch (err) {
+        res.status(500).json({
+            message: "Internal server error",
+            data: err
+        })
+    }
+}
+
+const resetpassword = async (req, res) => {
+    try {
+        const email = req.query.email;
+        console.log(email)
+        const password = req.body.password;
+        const user = await userModel.findOneAndUpdate(
+            { email: email },
+            { password: password }
+        );
+        if (user) {
+            res.status(200).json({
+                message: "Password updated",
+                data: user
+            })
+        } else {
+            res.status(403).json({
+                message: "User not found"
+            })
+        }
+    } catch (err) {
+        res.status(500).json({
+            message: "Internal server error",
+            data: err
+        })
+    }
+}
+
 module.exports = {
     getAllUsers,
     getUserById,
@@ -162,5 +214,7 @@ module.exports = {
     addUser,
     deleteUser,
     updateUser,
-    addHobby
+    addHobby,
+    forgotpassword,
+    resetpassword
 }
