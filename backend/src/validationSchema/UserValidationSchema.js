@@ -36,7 +36,7 @@ const userValidationSchema = zod.object({
     name: zod.string().min(2, { message: "Name must be at least 2 characters long." }).max(30).nonempty("Name is required"),
     age: zod.number().min(1, { message: "Age must be at least 1." }).max(100, { message: "Age must be less than 100." }),
     email: zod.string().email("Invalid email format").nonempty("Email is required"),
-    password: zod.string().min(8, { message: "Password must be at least 8 characters long." }).max(20).nonempty("Password is required"),
+    password: zod.string(),
     gender: zod.string(),
     status: zod.boolean(),
     sports: zod.array(zod.string()),

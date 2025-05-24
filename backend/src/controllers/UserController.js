@@ -1,5 +1,6 @@
 const userModel = require('../models/UserModel');
 const { mailsend } = require('../utils/MailUtil');
+const encryptUtil = require("../utils/EncryptUtil");
 
 const getAllUsers = async (req, res) => {
 
@@ -71,6 +72,7 @@ const getUserByName = async (req, res) => {
 
 const addUser = async (req, res) => {
     try {
+        req.body.password = encryptUtil.encryptPasswaord(req.body.password);
         const saveduser = await userModel.create(req.body)
         res.status(201).json({
             message: "User Successfully Add....",
@@ -160,7 +162,7 @@ const forgotpassword = async (req, res) => {
     try {
         const email = await userModel.find({ email: req.body.email })
         if (email) {
-            const mailResponse = await mailsend("riddhmodi2003@gmail.com", "Reset Password Url", `localhost:3000/user/resetpassword?email='${req.body.email}'`)
+            const mailResponse = await mailsend("riddhmodi2003@gmail.com", "Reset Password Url", `localhost:3000/user/resetpassword?email="${req.body.email}"`)
             res.status(201).json({
                 message: "You got the email...",
                 data: mailResponse
@@ -207,6 +209,29 @@ const resetpassword = async (req, res) => {
     }
 }
 
+const loginUser = async (req, res) => {
+    const { email, password } = req.body;
+    const userFromEmail = await userModel.findOne({ email: email });
+    console.log(userFromEmail.password);
+
+    if (userFromEmail) {
+        if (encryptUtil.comparePassword(password, userFromEmail.password)) {
+            res.status(200).json({
+                message: "user login successfully....s",
+                data: userFromEmail,
+            })
+        } else {
+            res.status(401).json({
+                message: "invalid password...",
+            })
+        }
+    } else {
+        res.status(404).json({
+            message: "User not found...",
+        })
+    }
+}
+
 module.exports = {
     getAllUsers,
     getUserById,
@@ -216,5 +241,6 @@ module.exports = {
     updateUser,
     addHobby,
     forgotpassword,
-    resetpassword
+    resetpassword,
+    loginUser,
 }
