@@ -7,6 +7,9 @@ const encryptPasswaord = (password) => {
 }
 
 const comparePassword = (plainPass, hashedPass) => {
+    if (!plainPass || !hashedPass) {
+        throw new Error("Both plain password and hashed password are required");
+    }
     return bcrypt.compareSync(plainPass, hashedPass);
 }
 

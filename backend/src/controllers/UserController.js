@@ -1,6 +1,7 @@
 const userModel = require('../models/UserModel');
 const { mailsend } = require('../utils/MailUtil');
 const encryptUtil = require("../utils/EncryptUtil");
+const tokenUtil = require("../utils/TokenUtil");
 
 const getAllUsers = async (req, res) => {
 
@@ -211,14 +212,21 @@ const resetpassword = async (req, res) => {
 
 const loginUser = async (req, res) => {
     const { email, password } = req.body;
+
+    if (!email || !password) {
+        return res.status(400).json({ message: "Email and password are required." });
+    }
+
     const userFromEmail = await userModel.findOne({ email: email });
-    console.log(userFromEmail.password);
+    // console.log(userFromEmail);
 
     if (userFromEmail) {
+        const token = tokenUtil.generateToken(userFromEmail.toObject());
         if (encryptUtil.comparePassword(password, userFromEmail.password)) {
             res.status(200).json({
                 message: "user login successfully....s",
-                data: userFromEmail,
+                // data: userFromEmail,
+                token: token,
             })
         } else {
             res.status(401).json({
