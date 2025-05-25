@@ -5,6 +5,16 @@ const app = express();
 const PORT = 3000;
 app.use(express.json());
 
+const validateToken = require("./src/middleware/AuthMiddleware.js");
+app.use((req, res, next) => {
+    const publicRoutes = ["/user/login"];
+    if (publicRoutes.includes(req.path)) {
+        return next();
+    }
+
+    validateToken(req, res, next);
+})
+
 const userRoutes = require('./src/routes/UserRoutes');
 app.use('/user', userRoutes);
 

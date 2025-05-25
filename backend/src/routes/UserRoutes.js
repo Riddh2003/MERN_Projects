@@ -8,6 +8,7 @@ const userController = require('../controllers/UserController');
 // const testMiddleware = require('../middleware/TestMiddleware');
 const zodMiddleware = require('../middleware/ZodMiddleware');
 const userValidationSchema = require('../validationSchema/UserValidationSchema');
+// const validateToken = require("../middleware/AuthMiddleware");
 
 router.get('/users', userController.getAllUsers);
 router.get('/user/:id', userController.getUserById);
