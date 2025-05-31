@@ -11,7 +11,6 @@ app.use((req, res, next) => {
     if (publicRoutes.includes(req.path)) {
         return next();
     }
-
     validateToken(req, res, next);
 })
 

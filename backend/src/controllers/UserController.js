@@ -1,10 +1,10 @@
 const userModel = require('../models/UserModel');
-const { mailsend } = require('../utils/MailUtil');
+const mailSend = require('../utils/MailUtil');
 const encryptUtil = require("../utils/EncryptUtil");
 const tokenUtil = require("../utils/TokenUtil");
 
 const getAllUsers = async (req, res) => {
-
+    // console.log(req.user);
     const users = await userModel.find().populate({
         path: 'role',
         select: 'name'
@@ -163,7 +163,7 @@ const forgotpassword = async (req, res) => {
     try {
         const email = await userModel.find({ email: req.body.email })
         if (email) {
-            const mailResponse = await mailsend("riddhmodi2003@gmail.com", "Reset Password Url", `localhost:3000/user/resetpassword?email="${req.body.email}"`)
+            const mailResponse = await mailSend("riddhmodi2003@gmail.com", "Reset Password Url", `localhost:3000/user/resetpassword?email="${req.body.email}"`)
             res.status(201).json({
                 message: "You got the email...",
                 data: mailResponse
@@ -221,7 +221,8 @@ const loginUser = async (req, res) => {
     // console.log(userFromEmail);
 
     if (userFromEmail) {
-        const token = tokenUtil.generateToken(userFromEmail.toObject());
+        // const token = tokenUtil.generateToken(userFromEmail.toObject());
+        const token = tokenUtil.generateToken(userFromEmail._id);
         if (encryptUtil.comparePassword(password, userFromEmail.password)) {
             res.status(200).json({
                 message: "user login successfully....s",
