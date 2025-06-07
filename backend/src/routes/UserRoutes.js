@@ -23,5 +23,6 @@ router.put('/addhobby/:id', userController.addHobby);
 router.post('/forgotpassword', userController.forgotpassword);
 router.post('/resetpassword', userController.resetpassword);
 router.post('/login', userController.loginUser);
+router.put('/logout/:id', userController.logout);
 
 module.exports = router;

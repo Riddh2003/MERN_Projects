@@ -32,6 +32,9 @@ const userSchema = new Schema({
         enum: ["A+", "B+", "A-", "B-", "O+"],
         type: String
     },
+    refreshToken: {
+        type: String
+    },
     // roleId: {
     //     type: Schema.Types.ObjectId,
     //     ref: "role"

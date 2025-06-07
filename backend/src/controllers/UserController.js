@@ -223,9 +223,17 @@ const loginUser = async (req, res) => {
     if (userFromEmail) {
         // const token = tokenUtil.generateToken(userFromEmail.toObject());
         const token = tokenUtil.generateToken(userFromEmail._id);
+        const refreshToken = tokenUtil.generateRefreshToken(userFromEmail._id);
         if (encryptUtil.comparePassword(password, userFromEmail.password)) {
+            await userModel.findByIdAndUpdate(userFromEmail._id, { refreshToken: refreshToken });
+            res.cookie('refreshToken', refreshToken, {
+                httpOnly: true,
+                // secure: true,
+                sameSite: 'Strict',
+                maxAge: 60 * 60 * 24 * 7 * 1000
+            });
             res.status(200).json({
-                message: "user login successfully....s",
+                message: "user login successfully....",
                 // data: userFromEmail,
                 token: token,
             })
@@ -241,6 +249,30 @@ const loginUser = async (req, res) => {
     }
 }
 
+const logout = async (req, res) => {
+    try {
+        const foundUser = await userModel.findById(req.params.id);
+        if (foundUser) {
+            await userModel.findByIdAndUpdate(foundUser._id, { refreshToken: null });
+            res.clearCookie('refreshToken', {
+                httpOnly: true,
+                sameSite: 'Strict'
+            });
+            res.status(200).json({ message: "Logged out successfully..." });
+        }
+        else {
+            res.status(404).json({
+                message: "User not found..."
+            })
+        }
+    } catch (err) {
+        res.status(500).json({
+            message: "Internal server error..."
+        })
+    }
+
+}
+
 module.exports = {
     getAllUsers,
     getUserById,
@@ -252,4 +284,5 @@ module.exports = {
     forgotpassword,
     resetpassword,
     loginUser,
+    logout
 }
