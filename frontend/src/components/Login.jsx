@@ -18,7 +18,7 @@ export const Login = () => {
                 email: data.email,
                 password: data.password
             })
-            console.log(response);
+            // console.log(response);
             if (response.data.token) {
                 localStorage.setItem('accessToken', response.data.token);
                 setLogin(true);
