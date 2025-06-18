@@ -14,7 +14,7 @@ const validateToken = async (req, res, next) => {
                 // console.log(userId)
                 const userIdFromDb = await userModel.findById(userId.id);
                 if (userIdFromDb) {
-                    console.log(userIdFromDb);
+                    // console.log(userIdFromDb);
                     req.user = userIdFromDb;
                     next()
                 }
