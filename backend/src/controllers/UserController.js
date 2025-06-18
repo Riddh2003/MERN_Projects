@@ -218,7 +218,7 @@ const loginUser = async (req, res) => {
     }
 
     const userFromEmail = await userModel.findOne({ email: email });
-    // console.log(userFromEmail);
+    console.log(userFromEmail);
 
     if (userFromEmail) {
         // const token = tokenUtil.generateToken(userFromEmail.toObject());

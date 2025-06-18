@@ -3,5 +3,6 @@
         ".php_cs": "php",
         ".php_cs.dist": "php",
         "GAME.C": "cpp"
-    }
+    },
+    "search.useGlobalIgnoreFiles": true
 }

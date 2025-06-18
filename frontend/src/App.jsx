@@ -1,17 +1,29 @@
-import { useState } from 'react'
-import { Navbar } from './components/Navbar'
+import React from 'react'
 import { Login } from './components/Login'
-import { Route, Routes } from 'react-router-dom'
+import { Navigate, Route, Routes } from 'react-router-dom'
+import { Navbar } from '../src/components/Navbar'
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { User } from './components/User';
 
 function App() {
-  const [count, setCount] = useState(0)
+  const ProtectedRoute = ({ children }) => {
+    const isAuthenticated = localStorage.getItem('accessToken');
+    return isAuthenticated ? children : <Navigate to='/' replace />;
+  }
 
   return (
-    <div className="min-h-[97vh] flex items-center justify-center bg-black">
-      <Routes>
-        <Route path='/' element={<Login />}></Route>
-      </Routes>
-    </div>
+    <Routes>
+      <Route path='/' element={<Login />}></Route>
+      <Route path='/user' element={<ProtectedRoute>
+        <div className='w-full flex-row px-6 py-2'>
+          <Navbar />
+        </div>
+        <div className='w-full flex-row'>
+          <User />
+        </div>
+      </ProtectedRoute>}></Route>
+      <Route path='*' element={<Navigate to='/' replace />}></Route>
+    </Routes>
   );
 }
 
