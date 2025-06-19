@@ -15,17 +15,15 @@ function App() {
       <Route path='/' element={<Login />}></Route>
       <Route path='/user' element={
         <ProtectedRoute>
-          <div className='w-full flex-row px-6 py-2'>
+          <div className='w-full min-h-[95vh] flex-row px-6 py-2'>
             <Navbar />
-          </div>
-          <div className='w-full min-h-[85vh] flex-row'>
             <User />
           </div>
         </ProtectedRoute>}>
       </Route>
       <Route path='/*' element={<Navigate to='/' replace />}></Route>
     </Routes>
-  );
+  )
 }
 
 export default App
