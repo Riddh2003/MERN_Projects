@@ -3,7 +3,7 @@ const SECRET = 'modi';
 
 const generateToken = (userId) => {
     // return jwt.sign(object, SECRET, { expiresIn: 60 });
-    return jwt.sign({ id: userId }, SECRET, { expiresIn: '15m' });
+    return jwt.sign({ id: userId }, SECRET, { expiresIn: '1m' });
 }
 
 const generateRefreshToken = (userId) => {

@@ -10,6 +10,7 @@ export const Login = () => {
     const [login, setLogin] = useState(false);
     const [showToast, setShowToast] = useState(false);
     const navigate = useNavigate();
+    const now = new Date();
 
     const submitHandler = async (data) => {
         setShowToast(false)
@@ -20,7 +21,8 @@ export const Login = () => {
             })
             // console.log(response);
             if (response.data.token) {
-                localStorage.setItem('accessToken', response.data.token);
+                localStorage.setItem('accessToken', response.data.token, now.getTime() + 15 * 60 * 1000);
+                document.cookie = `refreshToken=${response.data.refreshToken}; max-age=${60 * 60 * 24 * 7}; path=/`;
                 setLogin(true);
                 setShowToast(true);
 

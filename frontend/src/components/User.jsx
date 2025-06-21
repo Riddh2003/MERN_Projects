@@ -12,27 +12,37 @@ export const User = () => {
     const [loading, setLoading] = useState(true);
     const [showToast, setShowToast] = useState(false);
 
+    const getCookie = (name) => {
+        const cookies = document.cookie.split(';');
+        for (let cookie of cookies) {
+            const [key, value] = cookie.trim().split('=');
+            if (key === name) return value;
+        }
+        return null;
+    };
+
     useEffect(() => {
         const fetchUser = async () => {
             setShowToast(true);
             try {
                 const accessToken = localStorage.getItem('accessToken');
-                if (!accessToken) {
-                    navigate('/');
-                    setLoading(false);
-                    return;
-                }
                 const response = await axios.get('http://localhost:3000/user/users', {
                     headers: {
                         Authorization: `Bearer ${accessToken}`,
                     },
                 });
-                console.log(response.data.data)
+                // console.log(response.data.data)
                 setUser(response.data.data);
                 setLoading(false);
             } catch (error) {
-                console.error(error);
-                setLoading(false);
+                const refreshToken = getCookie('refreshToken');
+                const response = await axios.post('http://localhost:3000/user/generateaccesstoken', {
+                    refreshToken
+                });
+                localStorage.setItem('accessToken', response.data.token, new Date().getTime() + 15 * 60 * 1000);
+                fetchUser();
+                // console.error(error);
+                // setLoading(false);
             }
         };
         fetchUser();

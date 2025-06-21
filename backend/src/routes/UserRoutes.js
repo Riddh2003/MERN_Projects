@@ -15,6 +15,7 @@ router.get('/user/:id', userController.getUserById);
 router.get('/usersbyname', userController.getUserByName);
 
 router.post('/adduser', zodMiddleware(userValidationSchema), userController.addUser);
+router.post('/generateaccesstoken', userController.generateAccessTokenFromRefreshToken);
 
 router.delete('/deleteuser/:id', userController.deleteUser);
 router.put('/updateuser/:id', userController.updateUser);

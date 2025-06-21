@@ -2,6 +2,7 @@ const jwt = require("jsonwebtoken");
 const SECRET = 'modi';
 const userModel = require("../models/UserModel");
 const generateToken = require("../utils/TokenUtil");
+const userController = require("../controllers/UserController");
 
 const validateToken = async (req, res, next) => {
     var token = req.headers.authorization;
@@ -24,29 +25,6 @@ const validateToken = async (req, res, next) => {
                     })
                 }
             } catch (err) {
-
-                const refreshToken = req.cookie?.refreshToken;
-                if (!refreshToken) {
-                    return res.status(401).json({ message: "No refresh token. Login again." });
-                }
-
-                try {
-                    const decodedRefresh = jwt.verify(refreshToken, SECRET);
-                    const user = await userModel.findById(decodedRefresh.id);
-                    if (!user || user.refreshToken !== refreshToken) {
-                        return res.status(401).json({ message: "Refresh token invalid...." });
-                    }
-
-                    const newAccessToken = generateToken(user._id);
-                    res.setHeader('x-access-token', newAccessToken);
-                    req.user = user;
-                    next();
-                } catch (err) {
-                    return res.status(401).json({
-                        message: "Refresh token expired. Login again..."
-                    })
-                }
-
                 res.status(401).json({
                     message: "Invaild...",
                     err: err,

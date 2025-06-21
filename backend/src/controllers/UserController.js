@@ -225,16 +225,11 @@ const loginUser = async (req, res) => {
         const refreshToken = tokenUtil.generateRefreshToken(userFromEmail._id);
         if (encryptUtil.comparePassword(password, userFromEmail.password)) {
             await userModel.findByIdAndUpdate(userFromEmail._id, { refreshToken: refreshToken });
-            res.cookie('refreshToken', refreshToken, {
-                httpOnly: true,
-                // secure: true,
-                sameSite: 'Strict',
-                maxAge: 60 * 60 * 24 * 7 * 1000
-            });
             res.status(200).json({
                 message: "user login successfully....",
                 // data: userFromEmail,
                 token: token,
+                refreshToken: refreshToken
             })
         } else {
             res.status(401).json({
@@ -272,6 +267,31 @@ const logout = async (req, res) => {
 
 }
 
+const generateAccessTokenFromRefreshToken = async (req, res) => {
+    const token = req.body.refreshToken;
+    if (token) {
+        const userFromTokenFromDb = await userModel.findOne({ refreshToken: token });
+        console.log(userFromTokenFromDb)
+        if (userFromTokenFromDb) {
+            const accessToken = tokenUtil.generateToken(userFromTokenFromDb._id)
+            res.status(200).json({
+                message: "Generate Access Token...",
+                token: accessToken
+            })
+        }
+        else {
+            res.status(401).json({
+                message: "not valid user..."
+            })
+        }
+    }
+    else {
+        res.status(400).json({
+            message: "Please pass the refresh token..."
+        })
+    }
+}
+
 module.exports = {
     getAllUsers,
     getUserById,
@@ -283,5 +303,6 @@ module.exports = {
     forgotpassword,
     resetpassword,
     loginUser,
-    logout
+    logout,
+    generateAccessTokenFromRefreshToken
 }
