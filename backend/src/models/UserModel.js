@@ -35,6 +35,9 @@ const userSchema = new Schema({
     refreshToken: {
         type: String
     },
+    profileUrl: {
+        type: [String]
+    },
     // roleId: {
     //     type: Schema.Types.ObjectId,
     //     ref: "role"

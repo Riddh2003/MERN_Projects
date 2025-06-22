@@ -41,6 +41,8 @@ const userValidationSchema = zod.object({
     status: zod.boolean(),
     sports: zod.array(zod.string()),
     bloodgroups: zod.enum(["A+", "B+", "A-", "B-", "O+"]),
+    refreshToken: zod.string(),
+    profileUrl: zod.array(zod.string()),
     role: zod.string()
 }).strict();// .strict() is used to ensure that no extra fields are present in the object
 

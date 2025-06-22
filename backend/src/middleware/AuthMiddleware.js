@@ -1,8 +1,6 @@
 const jwt = require("jsonwebtoken");
 const SECRET = 'modi';
 const userModel = require("../models/UserModel");
-const generateToken = require("../utils/TokenUtil");
-const userController = require("../controllers/UserController");
 
 const validateToken = async (req, res, next) => {
     var token = req.headers.authorization;

@@ -1,4 +1,5 @@
 const multer = require("multer");
+const userModel = require('../models/UserModel');
 
 const storage = multer.diskStorage({
     filename: (req, file, cb) => {
@@ -60,24 +61,40 @@ const uploadFile = async (req, res) => {
 
 //Muiltiple files upload endpoint
 const multipleFileUpload = async (req, res) => {
-    upload(req, res, (err) => {
+    upload(req, res, async (err) => {
         if (err) {
             res.status(500).json({
                 message: err
             })
         }
-        else {
-            if (!req.files || req.files.length === 0) {
-                res.status(400).json({
-                    error: "No files uploaded."
-                })
-            }
-            else {
-                res.status(201).json({
-                    files: req.files
-                })
-            }
+        if (!req.files || req.files.length === 0) {
+            res.status(400).json({
+                error: "No files uploaded."
+            })
         }
+        try {
+            const userId = req.query.id;
+            const profileUrls = req.files.map(file => `/uploads/${file.filename}`);
+            const updateuser = await userModel.findByIdAndUpdate(userId, { profileUrl: profileUrls }, { new: true });
+            if (!updateuser) {
+                res.status(404).json({
+                    message: "User not found..."
+                })
+            }
+            res.status(201).json({
+                message: "file uploaded and user updated...",
+                files: req.files,
+                profileUrl: profileUrl,
+                user: updateuser
+            })
+        } catch (dberr) {
+            console.error('Database update error : ', dberr);
+            res.status(500).json({
+                error: "Failed to update user...",
+                data: dberr.message
+            })
+        }
+
     })
 }
 
