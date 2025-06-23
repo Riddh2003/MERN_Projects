@@ -1,5 +1,7 @@
 const multer = require("multer");
 const userModel = require('../models/UserModel');
+const mongoose = require('mongoose');
+const cloudinaryUtil = require('../utils/CloudinaryUtil');
 
 const storage = multer.diskStorage({
     filename: (req, file, cb) => {
@@ -25,6 +27,7 @@ const storage = multer.diskStorage({
 //     }
 // }).single("file");
 
+//multiple image file uploads
 const upload = multer({
     storage: storage,
     fileFilter: (req, file, cb) => {
@@ -74,8 +77,18 @@ const multipleFileUpload = async (req, res) => {
         }
         try {
             const userId = req.query.id;
-            const profileUrls = req.files.map(file => `/uploads/${file.filename}`);
-            const updateuser = await userModel.findByIdAndUpdate(userId, { profileUrl: profileUrls }, { new: true });
+            const cloudinaryResponse = [];
+            const uploadUrls = [];
+
+            for (const file of req.files) {
+                const cloudinaryData = await cloudinaryUtil.uploadOnCloudinary(file.path);
+                console.log(cloudinaryData)
+                uploadUrls.push(cloudinaryData.secure_url)
+                cloudinaryResponse.push(cloudinaryData)
+            }
+            const updateuser = await userModel.findByIdAndUpdate(userId, {
+                profileUrl: uploadUrls
+            }, { new: true });
             if (!updateuser) {
                 res.status(404).json({
                     message: "User not found..."
@@ -84,8 +97,9 @@ const multipleFileUpload = async (req, res) => {
             res.status(201).json({
                 message: "file uploaded and user updated...",
                 files: req.files,
-                profileUrl: profileUrl,
-                user: updateuser
+                profileUrl: uploadUrls,
+                user: updateuser,
+                cloudinaryResponse
             })
         } catch (dberr) {
             console.error('Database update error : ', dberr);

@@ -21,6 +21,7 @@ import { StudentTable2 } from "./components/StudentTable2.jsx";
 import { Task } from "./components/Task.jsx";
 import { Content } from "./components/Content.jsx";
 import { MUI } from "./components/MUI.jsx";
+import { FileUploading } from "./components/FileUploading.jsx";
 
 
 
@@ -51,6 +52,7 @@ function App() {
                     <Route path="/task" element={<Task />}></Route>
                     <Route path="/content" element={<Content />}></Route>
                     <Route path="/navbar/mui" element={<MUI />}></Route>
+                    <Route path='/fileupload' element={<FileUploading />}></Route>
 
                     <Route path="/*" element></Route>
                 </Routes>

@@ -48,6 +48,7 @@ export const Navbar = () => {
                   { path: "/navber/studenttable2", label: "Student Table2" },
                   { path: "/content", label: "Content" },
                   { path: "/navbar/mui", label: "MUI" },
+                  { path: "fileupload", label: "FileUploading" },
                 ].map((item) => (
                   <li key={item.path}>
                     <button
