@@ -8,6 +8,7 @@ const userController = require('../controllers/UserController');
 // const testMiddleware = require('../middleware/TestMiddleware');
 const zodMiddleware = require('../middleware/ZodMiddleware');
 const userValidationSchema = require('../validationSchema/UserValidationSchema');
+const multerMiddleware = require('../middleware/MulterMiddleware');
 // const validateToken = require("../middleware/AuthMiddleware");
 
 router.get('/users', userController.getAllUsers);
@@ -18,7 +19,7 @@ router.post('/adduser', zodMiddleware(userValidationSchema), userController.addU
 router.post('/generateaccesstoken', userController.generateAccessTokenFromRefreshToken);
 
 router.delete('/deleteuser/:id', userController.deleteUser);
-router.put('/updateuser/:id', userController.updateUser);
+router.put('/updateuser', multerMiddleware.multipleFileUpload, userController.updateUser);
 router.put('/addhobby/:id', userController.addHobby);
 
 router.post('/forgotpassword', userController.forgotpassword);

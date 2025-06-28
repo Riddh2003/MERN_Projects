@@ -110,17 +110,17 @@ const deleteUser = async (req, res) => {
 }
 
 const updateUser = async (req, res) => {
-    const userId = req.params.id;
-    const dataToUpdate = req.body;
+    const userId = req.query.id;
+    const bloodgroups = req.body.bloodgroups;
     try {
         const updatedUser = await userModel.findByIdAndUpdate(
             userId,
-            dataToUpdate,
+            { bloodgroups: bloodgroups },
             { new: true }
         );
         if (updatedUser) {
             res.status(200).json({
-                message: "user updated...",
+                message: "file uploaded & user updated...",
                 data: updatedUser
             })
         } else {
