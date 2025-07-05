@@ -48,6 +48,49 @@ app.post("/add-job", async (req, res) => {
     })
 })
 
+const fakeData = {
+    1: { name: "Riddh", age: 21 },
+    2: { name: "Raj", age: 23 },
+    3: { name: "Ram", age: 24 },
+    4: { name: "Vaibhav", age: 25 },
+    5: { name: "Preet", age: 21 },
+}
+
+const CACHE_MEMORY = 600;
+const cacheMemory = async (req, res, next) => {
+    const { id } = req.params;
+    try {
+        const cacheData = await redisConnection.get(id);
+        if (cacheData) {
+            console.log("Data fetched...")
+            res.status(200).json({
+                message: "User Data...",
+                data: JSON.parse(cacheData)
+            })
+        }
+        else {
+            console.log("Data not found in cache...")
+            next()
+        }
+    } catch (err) {
+        res.status(500).json({
+            message: "internal server err",
+            err: err
+        })
+    }
+}
+
+app.get('/getcachedatabyid/:id', cacheMemory, (req, res) => {
+    const { id } = req.params;
+    const userData = fakeData[id];
+    // store in cache
+    redisConnection.setex(id, CACHE_MEMORY, JSON.stringify(userData));
+    res.status(200).json({
+        message: "Data store in cache...",
+        data: userData
+    })
+})
+
 mongoose.connect('mongodb://127.0.0.1:27017/test').then(() => {
     console.log('MongoDB Connted....')
 }).catch(() => {
